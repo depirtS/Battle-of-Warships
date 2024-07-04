@@ -2,23 +2,35 @@
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
 
         public MainPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
+            InitializeLanguage();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private void InitializeLanguage()
         {
-            count++;
+            NameApplication.Text = AppResources.NameApplication;
+            PlayButton.Text = AppResources.FirstMenuButton;
+            SettingsButton.Text = AppResources.Settings;
+            HowPlayButton.Text = AppResources.HowPlay;
+        }
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
+        private void PlayButton_Clicked(object sender, EventArgs e)
+        {
+            //TODO: select list games or create game
+        }
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
+        private void SettingsButton_Clicked(object sender, EventArgs e)
+        {
+            GlobalManager.LoadingOverlay(LoadingOverlay, Navigation, new Settings());
+        }
+
+        private void HowPlayButton_Clicked(object sender, EventArgs e)
+        {
+            //TODO: Create "how play?" page
         }
     }
 
