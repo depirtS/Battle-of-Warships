@@ -24,6 +24,7 @@ public partial class Settings : ContentPage
 
     public Settings()
     {
+        GlobalManager.SetCulture(GlobalManager.CultureCode);
         InitializeComponent();
         NavigationPage.SetHasNavigationBar(this, false);
         InitializeLanguage();
@@ -38,7 +39,7 @@ public partial class Settings : ContentPage
         Header.Text = AppResources.Settings;
         SelectedLanguage.Title = AppResources.LangSelect;
         FieldColor.Title = AppResources.FieldSelectColor;
-        SelectShipColor.Title = AppResources.SelectShipColor;
+        ShipColor.Title = AppResources.SelectShipColor;
         AttackedFieldColor.Title = AppResources.AttackedFieldColor;
         EmptyFieldColor.Title = AppResources.EmptyFieldColor;
         SelectedAttackFieldColor.Title= AppResources.SelectedAttackFieldColor;
@@ -65,7 +66,7 @@ public partial class Settings : ContentPage
     private void InitializeStartColorSettings()
     {
         AnalyzePreference("FieldColor", FieldColor, FieldButton, Colors.Gray);
-        AnalyzePreference("SelectColor",SelectShipColor,ShipButton, Colors.Yellow);
+        AnalyzePreference("ShipColor",ShipColor,ShipButton, Colors.Yellow);
         AnalyzePreference("AttackedfieldColor",AttackedFieldColor,AttackedFieldButton, Colors.Red);
         AnalyzePreference("EmptyFieldColor", EmptyFieldColor,EmptyFieldButton,Colors.DarkRed);
         AnalyzePreference("SelectedAttackFieldColor", SelectedAttackFieldColor,SelectedAttackFieldButton, Colors.Orange);
@@ -98,10 +99,35 @@ public partial class Settings : ContentPage
         }
     }
 
-    private void SaveChanges()
+    private async void SaveChanges()
     {
-        GlobalManager.LoadingOverlay(LoadingOverlay, Navigation);
-        //TODO: saving settings in property
+        HashSet<string> colors = new HashSet<string>();
+        colors.Add((string)FieldColor.SelectedItem);
+        colors.Add((string)ShipColor.SelectedItem);
+        colors.Add((string)AttackedFieldColor.SelectedItem);
+        colors.Add((string)EmptyFieldColor.SelectedItem);
+        colors.Add((string)SelectedAttackFieldColor.SelectedItem);
+        if(colors.Count == 5)
+        {
+            Preferences.Set("FieldColor", FieldButton.BackgroundColor.ToHex());
+            Preferences.Set("ShipColor", ShipButton.BackgroundColor.ToHex());
+            Preferences.Set("AttackedfieldColor", AttackedFieldButton.BackgroundColor.ToHex());
+            Preferences.Set("EmptyFieldColor", EmptyFieldButton.BackgroundColor.ToHex());
+            Preferences.Set("SelectedAttackFieldColor", SelectedAttackFieldButton.BackgroundColor.ToHex());
+
+            Preferences.Set("CultureCode", GlobalManager.languageMap[(string)SelectedLanguage.SelectedItem]);
+            GlobalManager.CultureCode = Preferences.Default.Get("CultureCode", GlobalManager.languageMap[AppResources.English]);
+            GlobalManager.SetCulture(GlobalManager.CultureCode);
+
+            if(Application.Current != null)
+                Application.Current.MainPage = new NavigationPage(new MainPage());
+        }
+        else
+        {
+            bool answer = await DisplayAlert(AppResources.ExitAlert, AppResources.ExitIncorrectSettingsAlert, AppResources.SettingsReject, AppResources.ChangeInncorectSettings);
+            if (answer)
+                GlobalManager.LoadingOverlay(LoadingOverlay, Navigation);
+        }
     }
 
     private void FieldColor_SelectedIndexChanged(object sender, EventArgs e)
@@ -137,6 +163,16 @@ public partial class Settings : ContentPage
         Picker picker = (Picker)sender;
         Color color = GlobalManager.colorsList[(string)picker.SelectedItem];
         SelectedAttackFieldButton.BackgroundColor = color;
+    }
+
+    private void AcceptSettingsBtn_Clicked(object sender, EventArgs e)
+    {
+        SaveChanges();
+    }
+
+    private void RejectSettingsBtn_Clicked(object sender, EventArgs e)
+    {
+        GlobalManager.LoadingOverlay(LoadingOverlay, Navigation);
     }
 
     private void MainGrid_SizeChanged(object sender, EventArgs e)

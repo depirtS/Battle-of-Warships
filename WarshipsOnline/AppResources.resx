@@ -126,6 +126,9 @@
   <data name="Brown" xml:space="preserve">
     <value>Brown</value>
   </data>
+  <data name="ChangeInncorectSettings" xml:space="preserve">
+    <value>Change incorrect settings</value>
+  </data>
   <data name="Cyan" xml:space="preserve">
     <value>Cyan</value>
   </data>
@@ -158,6 +161,9 @@
   </data>
   <data name="ExitAlert" xml:space="preserve">
     <value>Exit warning</value>
+  </data>
+  <data name="ExitIncorrectSettingsAlert" xml:space="preserve">
+    <value>Button colors cannot be repeated.</value>
   </data>
   <data name="ExitSettingsAlert" xml:space="preserve">
     <value>Save changes?</value>

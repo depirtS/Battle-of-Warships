@@ -36,17 +36,15 @@
                     SelectedIndexChanged="FieldColor_SelectedIndexChanged"/>
                 <Button
                     x:Name="FieldButton"
-                    Style="{StaticResource MenuButton}"
-                    BackgroundColor="Gray"/>
+                    Style="{StaticResource MenuButton}"/>
 
                 <Picker
-                    x:Name="SelectShipColor"
+                    x:Name="ShipColor"
                     ItemsSource="{Binding ColorsBinding}"
                     SelectedIndexChanged="SelectColor_SelectedIndexChanged"/>
                 <Button
                     x:Name="ShipButton"
-                    Style="{StaticResource MenuButton}"
-                    BackgroundColor="Yellow"/>
+                    Style="{StaticResource MenuButton}"/>
 
                 <Picker
                     x:Name="AttackedFieldColor"
@@ -54,8 +52,7 @@
                     SelectedIndexChanged="AttackedFieldColor_SelectedIndexChanged"/>
                 <Button
                     x:Name="AttackedFieldButton"
-                    Style="{StaticResource MenuButton}"
-                    BackgroundColor="Red"/>
+                    Style="{StaticResource MenuButton}"/>
 
                 <Picker
                     x:Name="EmptyFieldColor"
@@ -63,8 +60,7 @@
                     SelectedIndexChanged="EmptyFieldColor_SelectedIndexChanged"/>
                 <Button
                     x:Name="EmptyFieldButton"
-                    Style="{StaticResource MenuButton}"
-                    BackgroundColor="DarkRed"/>
+                    Style="{StaticResource MenuButton}"/>
 
                 <Picker
                     x:Name="SelectedAttackFieldColor"
@@ -72,8 +68,7 @@
                     SelectedIndexChanged="SelectedAttackFieldColor_SelectedIndexChanged"/>
                 <Button
                     x:Name="SelectedAttackFieldButton"
-                    Style="{StaticResource MenuButton}"
-                    BackgroundColor="Orange"/>
+                    Style="{StaticResource MenuButton}"/>
 
                 <Grid x:Name="SaveButtons">
                     <Grid.ColumnDefinitions>
@@ -85,12 +80,14 @@
                         <RowDefinition Height="0*"/>
                     </Grid.RowDefinitions>
                     <Button
-                            x:Name="AcceptSettingsBtn"
-                            Style="{StaticResource MenuButton}"/>
+                        x:Name="AcceptSettingsBtn"
+                        Style="{StaticResource MenuButton}"
+                        Clicked="AcceptSettingsBtn_Clicked"/>
                     <Button
-                            Grid.Column="1"
-                            x:Name="RejectSettingsBtn"
-                            Style="{StaticResource MenuButton}"/>
+                        Grid.Column="1"
+                        x:Name="RejectSettingsBtn"
+                        Style="{StaticResource MenuButton}"
+                        Clicked="RejectSettingsBtn_Clicked"/>
                 </Grid>
             </StackLayout>
         </ScrollView>

@@ -88,6 +88,15 @@ namespace WarshipsOnline {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change incorrect settings.
+        /// </summary>
+        internal static string ChangeInncorectSettings {
+            get {
+                return ResourceManager.GetString("ChangeInncorectSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cyan.
         /// </summary>
         internal static string Cyan {
@@ -183,6 +192,15 @@ namespace WarshipsOnline {
         internal static string ExitAlert {
             get {
                 return ResourceManager.GetString("ExitAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Button colors cannot be repeated..
+        /// </summary>
+        internal static string ExitIncorrectSettingsAlert {
+            get {
+                return ResourceManager.GetString("ExitIncorrectSettingsAlert", resourceCulture);
             }
         }
         

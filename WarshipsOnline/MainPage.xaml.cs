@@ -5,6 +5,7 @@
 
         public MainPage()
         {
+            GlobalManager.SetCulture(GlobalManager.CultureCode);
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeLanguage();
