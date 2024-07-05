@@ -29,6 +29,7 @@ public partial class Settings : ContentPage
         InitializeLanguage();
         InitializeValues();
         InitializeStartColorSettings();
+        MainGrid_SizeChanged(this, new EventArgs());
 
     }
 
@@ -41,6 +42,8 @@ public partial class Settings : ContentPage
         AttackedFieldColor.Title = AppResources.AttackedFieldColor;
         EmptyFieldColor.Title = AppResources.EmptyFieldColor;
         SelectedAttackFieldColor.Title= AppResources.SelectedAttackFieldColor;
+        AcceptSettingsBtn.Text = AppResources.SettingsAccept;
+        RejectSettingsBtn.Text = AppResources.SettingsReject;
     }
 
     private void InitializeValues()
@@ -134,5 +137,29 @@ public partial class Settings : ContentPage
         Picker picker = (Picker)sender;
         Color color = GlobalManager.colorsList[(string)picker.SelectedItem];
         SelectedAttackFieldButton.BackgroundColor = color;
+    }
+
+    private void MainGrid_SizeChanged(object sender, EventArgs e)
+    {
+        if(this.Width <= this.Height)
+        {
+            MainGrid.ColumnDefinitions[0].Width = new GridLength(0, GridUnitType.Star); 
+            MainGrid.ColumnDefinitions[2].Width = new GridLength(0, GridUnitType.Star);
+
+            SaveButtons.RowDefinitions[1].Height = new GridLength(1, GridUnitType.Star);
+            SaveButtons.ColumnDefinitions[1].Width = new GridLength (0, GridUnitType.Star);
+            SaveButtons.SetRow(RejectSettingsBtn, 1);
+            SaveButtons.SetColumn(RejectSettingsBtn, 0);
+        }
+        else
+        {
+            MainGrid.ColumnDefinitions[0].Width = new GridLength(0.4, GridUnitType.Star);
+            MainGrid.ColumnDefinitions[2].Width = new GridLength(0.4, GridUnitType.Star);
+
+            SaveButtons.RowDefinitions[1].Height = new GridLength(0, GridUnitType.Star);
+            SaveButtons.ColumnDefinitions[1].Width = new GridLength(1, GridUnitType.Star);
+            SaveButtons.SetRow(RejectSettingsBtn, 0);
+            SaveButtons.SetColumn(RejectSettingsBtn, 1);
+        }
     }
 }

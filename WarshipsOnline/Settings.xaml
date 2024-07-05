@@ -3,15 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WarshipsOnline.Settings"
              Title="Settings">
-    <Grid>
+    <Grid SizeChanged="MainGrid_SizeChanged" x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.4*"/>
             <ColumnDefinition/>
-            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.4*"/>
         </Grid.ColumnDefinitions>
 
         <Image
@@ -74,6 +74,24 @@
                     x:Name="SelectedAttackFieldButton"
                     Style="{StaticResource MenuButton}"
                     BackgroundColor="Orange"/>
+
+                <Grid x:Name="SaveButtons">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="0*"/>
+                    </Grid.RowDefinitions>
+                    <Button
+                            x:Name="AcceptSettingsBtn"
+                            Style="{StaticResource MenuButton}"/>
+                    <Button
+                            Grid.Column="1"
+                            x:Name="RejectSettingsBtn"
+                            Style="{StaticResource MenuButton}"/>
+                </Grid>
             </StackLayout>
         </ScrollView>
 

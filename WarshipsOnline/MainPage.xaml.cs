@@ -32,6 +32,20 @@
         {
             //TODO: Create "how play?" page
         }
+
+        private void MainGrid_SizeChanged(object sender, EventArgs e)
+        {
+            if (this.Width <= this.Height)
+            {
+                MainGrid.ColumnDefinitions[0].Width = new GridLength(0, GridUnitType.Star);
+                MainGrid.ColumnDefinitions[2].Width = new GridLength(0, GridUnitType.Star);
+            }
+            else
+            {
+                MainGrid.ColumnDefinitions[0].Width = new GridLength(0.4, GridUnitType.Star);
+                MainGrid.ColumnDefinitions[2].Width = new GridLength(0.4, GridUnitType.Star);
+            }
+        }
     }
 
 }
