@@ -185,6 +185,14 @@ public partial class Settings : ContentPage
             SaveButtons.ColumnDefinitions[1].Width = new GridLength (0, GridUnitType.Star);
             SaveButtons.SetRow(RejectSettingsBtn, 1);
             SaveButtons.SetColumn(RejectSettingsBtn, 0);
+
+            int fontSize = 18;
+            SelectedLanguage.FontSize = fontSize;
+            FieldColor.FontSize = fontSize;
+            ShipColor.FontSize = fontSize;
+            AttackedFieldColor.FontSize = fontSize;
+            EmptyFieldColor.FontSize = fontSize;
+            SelectedAttackFieldColor.FontSize = fontSize;
         }
         else
         {
@@ -195,6 +203,14 @@ public partial class Settings : ContentPage
             SaveButtons.ColumnDefinitions[1].Width = new GridLength(1, GridUnitType.Star);
             SaveButtons.SetRow(RejectSettingsBtn, 0);
             SaveButtons.SetColumn(RejectSettingsBtn, 1);
+
+            int fontSize = 16;
+            SelectedLanguage.FontSize = fontSize;
+            FieldColor.FontSize = fontSize;
+            ShipColor.FontSize = fontSize;
+            AttackedFieldColor.FontSize = fontSize;
+            EmptyFieldColor.FontSize = fontSize;
+            SelectedAttackFieldColor.FontSize = fontSize;
         }
     }
 }

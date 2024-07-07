@@ -43,9 +43,9 @@ public partial class CreateGame : ContentPage
 
     private void InitializeLanguage()
     {
-        SelectGamemode.Title = AppResources.SelectGamemode;
         Header.Text = AppResources.CreateGameHeader;
         ExitButton.Text = AppResources.Exit;
+        SelectGamemode.Title = AppResources.SelectGamemode;
         BoardSize.Text = AppResources.BoardSize + SizeOfBoard + "x" + SizeOfBoard;
         ShipCount.Text = AppResources.ShipCount + CountOfShip;
         RoundTime.Text = AppResources.RoundTime + TimeOfRound +"s";
@@ -105,11 +105,23 @@ public partial class CreateGame : ContentPage
         {
             MainGrid.ColumnDefinitions[0].Width = new GridLength(0, GridUnitType.Star);
             MainGrid.ColumnDefinitions[2].Width = new GridLength(0, GridUnitType.Star);
+
+            int fontSize = 18;
+            SelectGamemode.FontSize = fontSize;
+            BoardSize.FontSize = fontSize;
+            ShipCount.FontSize = fontSize;
+            RoundTime.FontSize = fontSize;
         }
         else
         {
             MainGrid.ColumnDefinitions[0].Width = new GridLength(0.4, GridUnitType.Star);
             MainGrid.ColumnDefinitions[2].Width = new GridLength(0.4, GridUnitType.Star);
+
+            int fontSize = 16;
+            SelectGamemode.FontSize = fontSize;
+            BoardSize.FontSize = fontSize;
+            ShipCount.FontSize = fontSize;
+            RoundTime.FontSize = fontSize;
         }
     }
 }
