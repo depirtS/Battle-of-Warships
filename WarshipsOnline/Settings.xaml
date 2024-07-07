@@ -92,7 +92,7 @@
             </StackLayout>
         </ScrollView>
 
-        <Grid x:Name="LoadingOverlay" BackgroundColor="Black" Opacity="0.5" IsVisible="False" Grid.ColumnSpan="5" Grid.RowSpan="5" >
+        <Grid x:Name="LoadingOverlay" BackgroundColor="Black" Opacity="0.5" IsVisible="False" Grid.ColumnSpan="3" Grid.RowSpan="2">
             <ActivityIndicator IsRunning="True" VerticalOptions="Center" HorizontalOptions="Center" Color="White"/>
         </Grid>
     </Grid>

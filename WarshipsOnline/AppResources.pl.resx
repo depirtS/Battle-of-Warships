@@ -120,6 +120,12 @@
   <data name="AttackedFieldColor" xml:space="preserve">
     <value>Wybierz kolor atakowanego pola w grze:</value>
   </data>
+  <data name="Attention" xml:space="preserve">
+    <value>Uwaga</value>
+  </data>
+  <data name="BetaVersion" xml:space="preserve">
+    <value>Tryb gry sieciowej będzie dostępny dopiero po zakończeniu prac nad aplikacją.</value>
+  </data>
   <data name="Blue" xml:space="preserve">
     <value>Niebieski</value>
   </data>
@@ -128,6 +134,9 @@
   </data>
   <data name="ChangeInncorectSettings" xml:space="preserve">
     <value>Zmień nieprawidłowe ustawienia</value>
+  </data>
+  <data name="CreateGame" xml:space="preserve">
+    <value>Stwórz grę</value>
   </data>
   <data name="Cyan" xml:space="preserve">
     <value>Cyjan</value>
@@ -165,6 +174,9 @@
   <data name="ExitIncorrectSettingsAlert" xml:space="preserve">
     <value>Kolory przycisków nie mogą się powtarzać.</value>
   </data>
+  <data name="ExitSelectGamemode" xml:space="preserve">
+    <value>Powrót do menu</value>
+  </data>
   <data name="ExitSettingsAlert" xml:space="preserve">
     <value>Zapisać zmiany?</value>
   </data>
@@ -182,6 +194,9 @@
   </data>
   <data name="HowPlay" xml:space="preserve">
     <value>Jak grać?</value>
+  </data>
+  <data name="JoinGame" xml:space="preserve">
+    <value>Dołącz do gry</value>
   </data>
   <data name="LangSelect" xml:space="preserve">
     <value>Wybierz język aplikacji:</value>
@@ -209,6 +224,9 @@
   </data>
   <data name="SelectedAttackFieldColor" xml:space="preserve">
     <value>Wybierz kolor pola wybranego do ataku w grze:</value>
+  </data>
+  <data name="SelectGamemode" xml:space="preserve">
+    <value>Wybierz tryb gry</value>
   </data>
   <data name="SelectShipColor" xml:space="preserve">
     <value>Wybierz kolor pola statku w grze:</value>

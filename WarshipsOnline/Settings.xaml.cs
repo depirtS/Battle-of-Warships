@@ -27,13 +27,28 @@ public partial class Settings : ContentPage
         GlobalManager.SetCulture(GlobalManager.CultureCode);
         InitializeComponent();
         NavigationPage.SetHasNavigationBar(this, false);
-        InitializeLanguage();
+        ColorsBinding = new ObservableCollection<string>(GlobalManager.colorsList.Keys);
+        Languages = new ObservableCollection<string>(GlobalManager.languageMap.Keys);
+        BindingContext = this;
+        
         InitializeValues();
-        InitializeStartColorSettings();
-        MainGrid_SizeChanged(this, new EventArgs());
-
     }
 
+    private void InitializeValues()
+    {
+        var culture = CultureInfo.CurrentCulture;
+        if (culture != null)
+            for (int i = 0; i < Languages.Count; i++)
+                if (culture.Name == GlobalManager.languageMap[Languages[i]])
+                    SelectedLanguage.SelectedItem = Languages[i];
+
+        if (SelectedLanguage.SelectedItem == null)
+            SelectedLanguage.SelectedItem = Languages[0];
+
+        InitializeLanguage();
+        InitializeStartColorSettings();
+        MainGrid_SizeChanged(this, new EventArgs());
+    }
     private void InitializeLanguage()
     {
         Header.Text = AppResources.Settings;
@@ -45,22 +60,6 @@ public partial class Settings : ContentPage
         SelectedAttackFieldColor.Title= AppResources.SelectedAttackFieldColor;
         AcceptSettingsBtn.Text = AppResources.SettingsAccept;
         RejectSettingsBtn.Text = AppResources.SettingsReject;
-    }
-
-    private void InitializeValues()
-        {
-            ColorsBinding = new ObservableCollection<string>(GlobalManager.colorsList.Keys);
-            Languages = new ObservableCollection<string>(GlobalManager.languageMap.Keys);
-            BindingContext = this;
-
-            var culture = CultureInfo.CurrentCulture;
-            if(culture != null)
-                for(int i = 0; i < Languages.Count; i++)
-                    if(culture.Name == GlobalManager.languageMap[Languages[i]])
-                        SelectedLanguage.SelectedItem = Languages[i];
-
-            if(SelectedLanguage.SelectedItem == null)
-                SelectedLanguage.SelectedItem = Languages[0];
     }
 
     private void InitializeStartColorSettings()

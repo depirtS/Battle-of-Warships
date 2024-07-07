@@ -59,7 +59,6 @@ namespace WarshipsOnline
             SetDictionary();
         }
 
-
         public static Dictionary<string, Color> colorsList = new Dictionary<string, Color>()
             {
                 {AppResources.Gray, Colors.Gray},
@@ -83,6 +82,7 @@ namespace WarshipsOnline
                 {AppResources.Dark_cyan, Colors.DarkCyan},
                 {AppResources.Brown, Colors.Brown}
             };
+
         public async static void LoadingOverlay(Grid LoadingOverlay, INavigation Navigation)
         {
             LoadingOverlay.IsVisible = true;
@@ -91,6 +91,7 @@ namespace WarshipsOnline
             await Task.Delay(1500);
             LoadingOverlay.IsVisible = false;
         }
+
         public async static void LoadingOverlay(Grid LoadingOverlay, INavigation Navigation, Page PageToPush)
         {
             LoadingOverlay.IsVisible = true;

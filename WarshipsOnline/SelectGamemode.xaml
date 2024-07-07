@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WarshipsOnline.MainPage">
-
+             x:Class="WarshipsOnline.SelectGamemode"
+             Title="SelectGamemode">
     <Grid SizeChanged="MainGrid_SizeChanged" x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
@@ -19,29 +19,26 @@
             Aspect="AspectFill"
             Grid.ColumnSpan="3"
             Grid.RowSpan="2"/>
-
+        
         <StackLayout Grid.Row="1" Grid.Column="1">
             <Label
-                x:Name="NameApplication"
+                x:Name="NameWindow"
                 Style="{StaticResource Headline}"/>
             <Button
-                x:Name="PlayButton"
+                x:Name="JoinGame"
                 Style="{StaticResource MenuButton}"
-                Clicked="PlayButton_Clicked"/>
+                Clicked="JoinGame_Clicked"/>
             <Button
-                x:Name="SettingsButton"
+                x:Name="CreateGame"
                 Style="{StaticResource MenuButton}"
-                Clicked="SettingsButton_Clicked"/>
+                Clicked="CreateGame_Clicked"/>
             <Button
-                x:Name="HowPlayButton"
+                x:Name="BackButton"
                 Style="{StaticResource MenuButton}" 
-                Clicked="HowPlayButton_Clicked"/>
+                Clicked="BackButton_Clicked"/>
         </StackLayout>
-
         <Grid x:Name="LoadingOverlay" BackgroundColor="Black" Opacity="0.5" IsVisible="False" Grid.ColumnSpan="3" Grid.RowSpan="2">
             <ActivityIndicator IsRunning="True" VerticalOptions="Center" HorizontalOptions="Center" Color="White"/>
         </Grid>
     </Grid>
 </ContentPage>
-
-

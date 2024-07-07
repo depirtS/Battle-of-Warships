@@ -70,6 +70,24 @@ namespace WarshipsOnline {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attention.
+        /// </summary>
+        internal static string Attention {
+            get {
+                return ResourceManager.GetString("Attention", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Online gamemode will only be available after work on the application is completed..
+        /// </summary>
+        internal static string BetaVersion {
+            get {
+                return ResourceManager.GetString("BetaVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Blue.
         /// </summary>
         internal static string Blue {
@@ -93,6 +111,15 @@ namespace WarshipsOnline {
         internal static string ChangeInncorectSettings {
             get {
                 return ResourceManager.GetString("ChangeInncorectSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create game.
+        /// </summary>
+        internal static string CreateGame {
+            get {
+                return ResourceManager.GetString("CreateGame", resourceCulture);
             }
         }
         
@@ -205,6 +232,15 @@ namespace WarshipsOnline {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back to menu.
+        /// </summary>
+        internal static string ExitSelectGamemode {
+            get {
+                return ResourceManager.GetString("ExitSelectGamemode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save changes?.
         /// </summary>
         internal static string ExitSettingsAlert {
@@ -255,6 +291,15 @@ namespace WarshipsOnline {
         internal static string HowPlay {
             get {
                 return ResourceManager.GetString("HowPlay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Join game.
+        /// </summary>
+        internal static string JoinGame {
+            get {
+                return ResourceManager.GetString("JoinGame", resourceCulture);
             }
         }
         
@@ -336,6 +381,15 @@ namespace WarshipsOnline {
         internal static string SelectedAttackFieldColor {
             get {
                 return ResourceManager.GetString("SelectedAttackFieldColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select gamemode.
+        /// </summary>
+        internal static string SelectGamemode {
+            get {
+                return ResourceManager.GetString("SelectGamemode", resourceCulture);
             }
         }
         

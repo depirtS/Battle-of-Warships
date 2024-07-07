@@ -120,6 +120,12 @@
   <data name="AttackedFieldColor" xml:space="preserve">
     <value>Select color for attacked field in game:</value>
   </data>
+  <data name="Attention" xml:space="preserve">
+    <value>Attention</value>
+  </data>
+  <data name="BetaVersion" xml:space="preserve">
+    <value>Online gamemode will only be available after work on the application is completed.</value>
+  </data>
   <data name="Blue" xml:space="preserve">
     <value>Blue</value>
   </data>
@@ -128,6 +134,9 @@
   </data>
   <data name="ChangeInncorectSettings" xml:space="preserve">
     <value>Change incorrect settings</value>
+  </data>
+  <data name="CreateGame" xml:space="preserve">
+    <value>Create game</value>
   </data>
   <data name="Cyan" xml:space="preserve">
     <value>Cyan</value>
@@ -165,6 +174,9 @@
   <data name="ExitIncorrectSettingsAlert" xml:space="preserve">
     <value>Button colors cannot be repeated.</value>
   </data>
+  <data name="ExitSelectGamemode" xml:space="preserve">
+    <value>Back to menu</value>
+  </data>
   <data name="ExitSettingsAlert" xml:space="preserve">
     <value>Save changes?</value>
   </data>
@@ -182,6 +194,9 @@
   </data>
   <data name="HowPlay" xml:space="preserve">
     <value>How to play?</value>
+  </data>
+  <data name="JoinGame" xml:space="preserve">
+    <value>Join game</value>
   </data>
   <data name="LangSelect" xml:space="preserve">
     <value>Select application language:</value>
@@ -209,6 +224,9 @@
   </data>
   <data name="SelectedAttackFieldColor" xml:space="preserve">
     <value>Select color for field selected to attack in game:</value>
+  </data>
+  <data name="SelectGamemode" xml:space="preserve">
+    <value>Select gamemode</value>
   </data>
   <data name="SelectShipColor" xml:space="preserve">
     <value>Select color for field of ship in game:</value>

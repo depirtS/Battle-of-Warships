@@ -21,7 +21,7 @@
 
         private void PlayButton_Clicked(object sender, EventArgs e)
         {
-            //TODO: select list games or create game
+            GlobalManager.LoadingOverlay(LoadingOverlay, Navigation, new SelectGamemode());
         }
 
         private void SettingsButton_Clicked(object sender, EventArgs e)
@@ -31,7 +31,7 @@
 
         private void HowPlayButton_Clicked(object sender, EventArgs e)
         {
-            //TODO: Create "how play?" page
+            GlobalManager.LoadingOverlay(LoadingOverlay, Navigation, new HowToPlay());
         }
 
         private void MainGrid_SizeChanged(object sender, EventArgs e)
