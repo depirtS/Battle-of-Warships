@@ -86,6 +86,12 @@
 	  <MauiXaml Update="HowToPlay.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="PlayWithBot.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PlayWithPlayer.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="SelectGamemode.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

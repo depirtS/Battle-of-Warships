@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WarshipsOnline.PlayWithBot"
+             Title="PlayWithBot">
+    <Grid SizeChanged="MainGrid_SizeChanged" x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image
+        Source="battleship.png"
+        Aspect="AspectFill"
+        Grid.ColumnSpan="2"
+        Grid.RowSpan="3"/>
+
+        <StackLayout Grid.Row="1" Grid.Column="1">
+        </StackLayout>
+
+        <Grid x:Name="LoadingOverlay" BackgroundColor="Black" Opacity="0.5" IsVisible="False" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <ActivityIndicator IsRunning="True" VerticalOptions="Center" HorizontalOptions="Center" Color="White"/>
+        </Grid>
+    </Grid>
+</ContentPage>

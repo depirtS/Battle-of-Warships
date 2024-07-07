@@ -234,6 +234,9 @@
   <data name="Red" xml:space="preserve">
     <value>Red</value>
   </data>
+  <data name="RoundTime" xml:space="preserve">
+    <value>Time of round a player: </value>
+  </data>
   <data name="Sea green" xml:space="preserve">
     <value>Sea green</value>
   </data>

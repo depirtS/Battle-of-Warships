@@ -19,6 +19,7 @@ public partial class CreateGame : ContentPage
     public ObservableCollection<string> Gamemodes { get; set; }
     private int SizeOfBoard { get; set; }
     private int CountOfShip { get; set; }
+    private int TimeOfRound { get; set; }
 
     public CreateGame()
     {
@@ -36,6 +37,7 @@ public partial class CreateGame : ContentPage
     {
         SelectGamemode.SelectedIndex = 0;
         SizeOfBoard = CountOfShip = 3;
+        TimeOfRound = 120;
 
     }
 
@@ -46,13 +48,14 @@ public partial class CreateGame : ContentPage
         ExitButton.Text = AppResources.Exit;
         BoardSize.Text = AppResources.BoardSize + SizeOfBoard + "x" + SizeOfBoard;
         ShipCount.Text = AppResources.ShipCount + CountOfShip;
+        RoundTime.Text = AppResources.RoundTime + TimeOfRound +"s";
+        CreateGameBtn.Text = AppResources.CreateGame;
     }
 
     private void BoardSize_DragCompleted(object sender, EventArgs e)
     {
         Slider slider = (Slider)sender;
         SizeOfBoard = (int)slider.Value;
-        slider.Value = SizeOfBoard;
 
         CountOfShip = (int)slider.Value;
         ShipCountSlider.Minimum = (int)slider.Value;
@@ -64,8 +67,31 @@ public partial class CreateGame : ContentPage
     private void ShipCount_DragCompleted(object sender, EventArgs e)
     {
         CountOfShip = (int)ShipCountSlider.Value;
-        ShipCountSlider.Value = CountOfShip;
         ShipCount.Text = AppResources.ShipCount + CountOfShip;
+    }
+
+    private void RoundTime_DragCompleted(object sender, EventArgs e)
+    {
+        Slider slider = (Slider)sender;
+        TimeOfRound = (int)slider.Value;
+        RoundTime.Text = AppResources.RoundTime + TimeOfRound + "s";
+    }
+
+    private void CreateGameBtn_Clicked(object sender, EventArgs e)
+    {
+        int gamemodeID = SelectGamemode.SelectedIndex;
+        switch(gamemodeID)
+        {
+            case 0:
+                GlobalManager.LoadingOverlay(LoadingOverlay, Navigation, new PlayWithPlayer(SizeOfBoard,CountOfShip,TimeOfRound));
+                break;
+            case 1:
+                GlobalManager.LoadingOverlay(LoadingOverlay, Navigation, new PlayWithBot(SizeOfBoard, CountOfShip, TimeOfRound));
+                break;
+            default:
+                DisplayAlert("Error", "Select gamemode not found", "OK"); //TODO: You want play with bot? if yes = start round with bot else close alert
+                break;
+        }
     }
 
     private void ExitButton_Clicked(object sender, EventArgs e)
@@ -86,5 +112,4 @@ public partial class CreateGame : ContentPage
             MainGrid.ColumnDefinitions[2].Width = new GridLength(0.4, GridUnitType.Star);
         }
     }
-
 }

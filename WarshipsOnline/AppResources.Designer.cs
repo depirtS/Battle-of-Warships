@@ -412,6 +412,15 @@ namespace WarshipsOnline {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Time of round a player: .
+        /// </summary>
+        internal static string RoundTime {
+            get {
+                return ResourceManager.GetString("RoundTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sea green.
         /// </summary>
         internal static string Sea_green {

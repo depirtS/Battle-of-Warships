@@ -234,6 +234,9 @@
   <data name="Red" xml:space="preserve">
     <value>Czerwony</value>
   </data>
+  <data name="RoundTime" xml:space="preserve">
+    <value>Czas rundy gracza: </value>
+  </data>
   <data name="Sea green" xml:space="preserve">
     <value>Morski</value>
   </data>

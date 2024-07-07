@@ -21,34 +21,53 @@
             Grid.RowSpan="2"/>
         <ScrollView Grid.Row="1" Grid.Column="1" BackgroundColor="#80000000">
             <StackLayout>
-                <Label x:Name="Header"
-                       Style="{StaticResource Headline}"
-                       Margin="10"/>
-                
-                <Button x:Name="ExitButton"
-                        Clicked="ExitButton_Clicked"
-                        Style="{StaticResource MenuButton}"/>
+                <Label
+                    x:Name="Header"
+                    Style="{StaticResource Headline}"
+                    Margin="10"/>
 
-                <Picker x:Name="SelectGamemode"
-                        ItemsSource="{Binding Gamemodes}"
-                        Margin="0,20,0,20"/>
+                <Button
+                    x:Name="ExitButton"
+                    Clicked="ExitButton_Clicked"
+                    Style="{StaticResource MenuButton}"/>
 
-                <Label x:Name="BoardSize"
-                       Margin="10"/>
+                <Picker
+                    x:Name="SelectGamemode"
+                    ItemsSource="{Binding Gamemodes}"
+                    Margin="0,20,0,20"/>
+
+                <Label
+                    x:Name="BoardSize"
+                    Margin="10"/>
                 <Slider
                     DragCompleted="BoardSize_DragCompleted"
                     Minimum="3"
                     Maximum="7"
                     Margin="0,5,0,5"/>
 
-                <Label x:Name="ShipCount"
-                       Margin="10"/>
+                <Label
+                    x:Name="ShipCount"
+                    Margin="10"/>
                 <Slider
                     x:Name="ShipCountSlider"
                     DragCompleted="ShipCount_DragCompleted"
                     Minimum="3"
                     Maximum="6"
                     Margin="0,5,0,5"/>
+
+                <Label
+                    x:Name="RoundTime"
+                    Margin="10"/>
+                <Slider
+                    DragCompleted="RoundTime_DragCompleted"
+                    Minimum="15"
+                    Maximum="180"
+                    Margin="0,5,0,5"
+                    Value="120"/>
+                <Button
+                    x:Name="CreateGameBtn"
+                    Style="{StaticResource MenuButton}"
+                    Clicked="CreateGameBtn_Clicked"/>
             </StackLayout>
         </ScrollView>
 
