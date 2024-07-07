@@ -33,9 +33,9 @@
                 Style="{StaticResource MenuButton}"
                 Clicked="CreateGame_Clicked"/>
             <Button
-                x:Name="BackButton"
+                x:Name="ExitButton"
                 Style="{StaticResource MenuButton}" 
-                Clicked="BackButton_Clicked"/>
+                Clicked="ExitButton_Clicked"/>
         </StackLayout>
         <Grid x:Name="LoadingOverlay" BackgroundColor="Black" Opacity="0.5" IsVisible="False" Grid.ColumnSpan="3" Grid.RowSpan="2">
             <ActivityIndicator IsRunning="True" VerticalOptions="Center" HorizontalOptions="Center" Color="White"/>

@@ -34,7 +34,7 @@
                 Clicked="SettingsButton_Clicked"/>
             <Button
                 x:Name="HowPlayButton"
-                Style="{StaticResource MenuButton}" 
+                Style="{StaticResource MenuButton}"
                 Clicked="HowPlayButton_Clicked"/>
         </StackLayout>
 

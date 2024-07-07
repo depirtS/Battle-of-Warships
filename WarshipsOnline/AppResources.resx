@@ -129,6 +129,9 @@
   <data name="Blue" xml:space="preserve">
     <value>Blue</value>
   </data>
+  <data name="BoardSize" xml:space="preserve">
+    <value>Board size: </value>
+  </data>
   <data name="Brown" xml:space="preserve">
     <value>Brown</value>
   </data>
@@ -137,6 +140,12 @@
   </data>
   <data name="CreateGame" xml:space="preserve">
     <value>Create game</value>
+  </data>
+  <data name="CreateGameExitAlert" xml:space="preserve">
+    <value>Game settings will not be saved. Are you sure you want to leave?</value>
+  </data>
+  <data name="CreateGameHeader" xml:space="preserve">
+    <value>Select game settings</value>
   </data>
   <data name="Cyan" xml:space="preserve">
     <value>Cyan</value>
@@ -167,6 +176,9 @@
   </data>
   <data name="English" xml:space="preserve">
     <value>English</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Exit</value>
   </data>
   <data name="ExitAlert" xml:space="preserve">
     <value>Exit warning</value>
@@ -204,6 +216,9 @@
   <data name="NameApplication" xml:space="preserve">
     <value>Battle of Warships</value>
   </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
   <data name="Orange" xml:space="preserve">
     <value>Orange</value>
   </data>
@@ -240,13 +255,25 @@
   <data name="SettingsReject" xml:space="preserve">
     <value>Don't save my changes</value>
   </data>
+  <data name="ShipCount" xml:space="preserve">
+    <value>Number of ships per player: </value>
+  </data>
   <data name="Sky blue" xml:space="preserve">
     <value>Sky blue</value>
   </data>
   <data name="Violet" xml:space="preserve">
     <value>Violet</value>
   </data>
+  <data name="WithBot" xml:space="preserve">
+    <value>Bame with a bot</value>
+  </data>
+  <data name="WithPlayer" xml:space="preserve">
+    <value>Local game with a second player</value>
+  </data>
   <data name="Yellow" xml:space="preserve">
     <value>Yellow</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

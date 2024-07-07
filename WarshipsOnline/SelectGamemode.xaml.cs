@@ -20,7 +20,7 @@ public partial class SelectGamemode : ContentPage
         NameWindow.Text = AppResources.SelectGamemode;
         JoinGame.Text = AppResources.JoinGame;
         CreateGame.Text = AppResources.CreateGame;
-        BackButton.Text = AppResources.ExitSelectGamemode;
+        ExitButton.Text = AppResources.ExitSelectGamemode;
     }
 
     private void MainGrid_SizeChanged(object sender, EventArgs e)
@@ -46,7 +46,7 @@ public partial class SelectGamemode : ContentPage
         GlobalManager.LoadingOverlay(LoadingOverlay, Navigation, new CreateGame());
     }
 
-    private void BackButton_Clicked(object sender, EventArgs e)
+    private void ExitButton_Clicked(object sender, EventArgs e)
     {
         GlobalManager.LoadingOverlay(LoadingOverlay, Navigation);
     }

@@ -97,6 +97,15 @@ namespace WarshipsOnline {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Board size: .
+        /// </summary>
+        internal static string BoardSize {
+            get {
+                return ResourceManager.GetString("BoardSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Brown.
         /// </summary>
         internal static string Brown {
@@ -120,6 +129,24 @@ namespace WarshipsOnline {
         internal static string CreateGame {
             get {
                 return ResourceManager.GetString("CreateGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game settings will not be saved. Are you sure you want to leave?.
+        /// </summary>
+        internal static string CreateGameExitAlert {
+            get {
+                return ResourceManager.GetString("CreateGameExitAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select game settings.
+        /// </summary>
+        internal static string CreateGameHeader {
+            get {
+                return ResourceManager.GetString("CreateGameHeader", resourceCulture);
             }
         }
         
@@ -210,6 +237,15 @@ namespace WarshipsOnline {
         internal static string English {
             get {
                 return ResourceManager.GetString("English", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        internal static string Exit {
+            get {
+                return ResourceManager.GetString("Exit", resourceCulture);
             }
         }
         
@@ -322,6 +358,15 @@ namespace WarshipsOnline {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        internal static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Orange.
         /// </summary>
         internal static string Orange {
@@ -430,6 +475,15 @@ namespace WarshipsOnline {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Number of ships per player: .
+        /// </summary>
+        internal static string ShipCount {
+            get {
+                return ResourceManager.GetString("ShipCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sky blue.
         /// </summary>
         internal static string Sky_blue {
@@ -448,11 +502,38 @@ namespace WarshipsOnline {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bame with a bot.
+        /// </summary>
+        internal static string WithBot {
+            get {
+                return ResourceManager.GetString("WithBot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Local game with a second player.
+        /// </summary>
+        internal static string WithPlayer {
+            get {
+                return ResourceManager.GetString("WithPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yellow.
         /// </summary>
         internal static string Yellow {
             get {
                 return ResourceManager.GetString("Yellow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        internal static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

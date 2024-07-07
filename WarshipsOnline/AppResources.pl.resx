@@ -129,6 +129,9 @@
   <data name="Blue" xml:space="preserve">
     <value>Niebieski</value>
   </data>
+  <data name="BoardSize" xml:space="preserve">
+    <value>Rozmiar planszy: </value>
+  </data>
   <data name="Brown" xml:space="preserve">
     <value>Brązowy</value>
   </data>
@@ -137,6 +140,12 @@
   </data>
   <data name="CreateGame" xml:space="preserve">
     <value>Stwórz grę</value>
+  </data>
+  <data name="CreateGameExitAlert" xml:space="preserve">
+    <value>Ustawienia gry nie zostaną zapisane. Jesteś pewny, że chcesz wyjść?</value>
+  </data>
+  <data name="CreateGameHeader" xml:space="preserve">
+    <value>Wybierz ustawienia gry</value>
   </data>
   <data name="Cyan" xml:space="preserve">
     <value>Cyjan</value>
@@ -167,6 +176,9 @@
   </data>
   <data name="English" xml:space="preserve">
     <value>Angielski</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Powrót</value>
   </data>
   <data name="ExitAlert" xml:space="preserve">
     <value>Ostrzeżenie o wyjściu</value>
@@ -204,6 +216,9 @@
   <data name="NameApplication" xml:space="preserve">
     <value>Wojny statków</value>
   </data>
+  <data name="No" xml:space="preserve">
+    <value>Nie</value>
+  </data>
   <data name="Orange" xml:space="preserve">
     <value>Pomarańczowy</value>
   </data>
@@ -240,13 +255,25 @@
   <data name="SettingsReject" xml:space="preserve">
     <value>Nie zapisuj moich zmian</value>
   </data>
+  <data name="ShipCount" xml:space="preserve">
+    <value>Ilość statków jednego gracza: </value>
+  </data>
   <data name="Sky blue" xml:space="preserve">
     <value>Błękitny</value>
   </data>
   <data name="Violet" xml:space="preserve">
     <value>Fiołkowy</value>
   </data>
+  <data name="WithBot" xml:space="preserve">
+    <value>Gra z botem</value>
+  </data>
+  <data name="WithPlayer" xml:space="preserve">
+    <value>Gra lokalnie z drugim graczem</value>
+  </data>
   <data name="Yellow" xml:space="preserve">
     <value>Żółty</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Tak</value>
   </data>
 </root>

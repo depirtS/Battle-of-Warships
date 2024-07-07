@@ -3,10 +3,57 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WarshipsOnline.CreateGame"
              Title="CreateGame">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid SizeChanged="MainGrid_SizeChanged" x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.4*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image
+            Source="battleship.png"
+            Aspect="AspectFill"
+            Grid.ColumnSpan="3"
+            Grid.RowSpan="2"/>
+        <ScrollView Grid.Row="1" Grid.Column="1" BackgroundColor="#80000000">
+            <StackLayout>
+                <Label x:Name="Header"
+                       Style="{StaticResource Headline}"
+                       Margin="10"/>
+                
+                <Button x:Name="ExitButton"
+                        Clicked="ExitButton_Clicked"
+                        Style="{StaticResource MenuButton}"/>
+
+                <Picker x:Name="SelectGamemode"
+                        ItemsSource="{Binding Gamemodes}"
+                        Margin="0,20,0,20"/>
+
+                <Label x:Name="BoardSize"
+                       Margin="10"/>
+                <Slider
+                    DragCompleted="BoardSize_DragCompleted"
+                    Minimum="3"
+                    Maximum="7"
+                    Margin="0,5,0,5"/>
+
+                <Label x:Name="ShipCount"
+                       Margin="10"/>
+                <Slider
+                    x:Name="ShipCountSlider"
+                    DragCompleted="ShipCount_DragCompleted"
+                    Minimum="3"
+                    Maximum="6"
+                    Margin="0,5,0,5"/>
+            </StackLayout>
+        </ScrollView>
+
+        <Grid x:Name="LoadingOverlay" BackgroundColor="Black" Opacity="0.5" IsVisible="False" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <ActivityIndicator IsRunning="True" VerticalOptions="Center" HorizontalOptions="Center" Color="White"/>
+        </Grid>
+    </Grid>
 </ContentPage>
