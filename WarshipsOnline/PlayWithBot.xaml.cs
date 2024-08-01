@@ -117,6 +117,14 @@ public partial class PlayWithBot : ContentPage
             }
         }
 
+        var timer = Dispatcher.CreateTimer();
+        timer.Interval = TimeSpan.FromSeconds(1);
+        timer.Tick += (s, e) =>
+        {
+            MainGrid_SizeChanged(this, e);
+            timer.Stop();
+        };
+        timer.Start();
     }
 
 

@@ -511,7 +511,7 @@ namespace WarshipsOnline {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bame with a bot.
+        ///   Looks up a localized string similar to Game with a bot.
         /// </summary>
         internal static string WithBot {
             get {

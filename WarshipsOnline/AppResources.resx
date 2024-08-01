@@ -268,7 +268,7 @@
     <value>Violet</value>
   </data>
   <data name="WithBot" xml:space="preserve">
-    <value>Bame with a bot</value>
+    <value>Game with a bot</value>
   </data>
   <data name="WithPlayer" xml:space="preserve">
     <value>Local game with a second player</value>
