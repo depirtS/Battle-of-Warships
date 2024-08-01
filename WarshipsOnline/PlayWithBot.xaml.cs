@@ -5,6 +5,8 @@ public partial class PlayWithBot : ContentPage
     private int SizeOfBoard { get; set; }
     private int CountOfShip { get; set; }
     private int TimeOfRound { get; set; }
+    private Player Player { get; set; }
+    private Bot Bot { get; set; }
     private Dictionary<string, Button> ButtonDictionary { get; set; }
     public PlayWithBot(int sizeOfBoard, int countOfShip, int timeOfRound)
     {
@@ -16,6 +18,8 @@ public partial class PlayWithBot : ContentPage
         InitializeComponent();
         NavigationPage.SetHasNavigationBar(this, false);
         InitializeBoard();
+        Player = new Player(sizeOfBoard);
+        Bot = new Bot(SizeOfBoard);
     }
 
     private void InitializeBoard()
@@ -89,7 +93,7 @@ public partial class PlayWithBot : ContentPage
         {
             for (int j = 0; j < SizeOfBoard; j++)
             {
-                string buttonName = rows[i] + cols[j];
+                string buttonName = i + " " + j;
                 var button = new Button
                 {
                     Text = buttonName,
@@ -127,16 +131,12 @@ public partial class PlayWithBot : ContentPage
         timer.Start();
     }
 
-
     private void MainGrid_SizeChanged(object sender, EventArgs e)
     {
         if(BoardAndControls.Width > BoardAndControls.Height)
         {
             BoardAndControls.Orientation = StackOrientation.Horizontal;
-            if(BoardAndControls.Width - BoardAndControls.Height > 300)
-                GridBoard.HeightRequest = BoardAndControls.Width / 2.4 - 50;
-            else
-                GridBoard.HeightRequest = BoardAndControls.Width / 2.2 - 50;
+            GridBoard.HeightRequest = BoardAndControls.Width / 2.0 - 50;
             GridBoard.WidthRequest = BoardAndControls.Width / 2 - 50;
             if (SizeOfBoard == 7)
             {
