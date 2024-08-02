@@ -7,6 +7,9 @@ public partial class PlayWithBot : ContentPage
     private int TimeOfRound { get; set; }
     private Player Player { get; set; }
     private Bot Bot { get; set; }
+    private bool SelectShip { get; set; }
+    private bool PlayerTurn {  get; set; }
+    private IDispatcherTimer Timer { get; set; }
     private Dictionary<string, Button> ButtonDictionary { get; set; }
     public PlayWithBot(int sizeOfBoard, int countOfShip, int timeOfRound)
     {
@@ -18,6 +21,7 @@ public partial class PlayWithBot : ContentPage
         InitializeComponent();
         NavigationPage.SetHasNavigationBar(this, false);
         InitializeBoard();
+        InitializeTimer();
 
         Player = new Player(sizeOfBoard);
         Bot = new Bot(SizeOfBoard);
@@ -116,7 +120,7 @@ public partial class PlayWithBot : ContentPage
 
                 ButtonDictionary.Add(button.StyleId, button);
 
-                //button.Clicked += Selected_Field;
+                button.Clicked += Selected_Field;
 
                 GridBoard.Children.Add(button);
 
@@ -134,6 +138,82 @@ public partial class PlayWithBot : ContentPage
             timer.Stop();
         };
         timer.Start();
+    }
+
+    private void InitializeTimer()
+    {
+        int time = TimeOfRound;
+        Timer = Dispatcher.CreateTimer();
+        Timer.Interval = TimeSpan.FromSeconds(1);
+        Timer.Tick += (s, e) =>
+        {
+            if (time == 0)
+            {
+                time = TimeOfRound;
+                if (SelectShip)
+                {
+                    if (PlayerTurn)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+                    if (PlayerTurn)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+            else
+            {
+                int min = time / 60;
+                int sec = time % 60;
+                if (min < 10 && sec < 10)
+                    SeeTimer.Text = $"0{min}:0{sec}";
+                else if(min < 10 && sec > 10)
+                    SeeTimer.Text = $"0{min}:{sec}";
+                else
+                    SeeTimer.Text = $"{min}:{sec}";
+                time--;
+            }
+        };
+        Timer.Start();
+    }
+
+    private void Selected_Field(object sender, EventArgs e)
+    {
+        Button button = (Button)sender;
+        if (SelectShip)
+        {
+            if (PlayerTurn)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+        else
+        {
+            if (PlayerTurn)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
     }
 
     private void Confrim_Clicked(object sender, EventArgs e)

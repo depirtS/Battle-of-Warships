@@ -13,20 +13,32 @@
         </Grid.ColumnDefinitions>
 
         <Image
-        Source="battleship.png"
-        Aspect="AspectFill"
-        Grid.ColumnSpan="2"
-        Grid.RowSpan="3"/>
+            Source="battleship.png"
+            Aspect="AspectFill"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="3"/>
+        <Label
+            x:Name="SeeTimer"
+            Grid.RowSpan="2"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            FontSize="24"
+            Padding="20,5,0,0"
+            WidthRequest="100"
+            HeightRequest="50"
+            BackgroundColor="#50000000"/>
         <StackLayout Orientation="Horizontal" x:Name="BoardAndControls" Grid.Row ="1">
             <Grid x:Name="GridBoard" Margin="5"></Grid>
             <ScrollView x:Name="GameControl" Margin="5" Padding="50,0,0,0">
                 <StackLayout>
-                    <Label x:Name="MarineRadarHeadline"
-                           Style="{StaticResource Headline}"/>
-                    <Label x:Name="MarineRadarInfo"
-                           FontSize="20"
-                           Text="xxx*5, xx*2, xxxx*6"
-                           LineBreakMode="WordWrap"/>
+                    <Label 
+                        x:Name="MarineRadarHeadline"
+                        Style="{StaticResource Headline}"/>
+                    <Label
+                        x:Name="MarineRadarInfo"
+                        FontSize="20"
+                        Text="xxx*5, xx*2, xxxx*6"
+                        LineBreakMode="WordWrap"/>
                     <Button
                         x:Name="Confrim"
                         Style="{StaticResource MenuButton}"
