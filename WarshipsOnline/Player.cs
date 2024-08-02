@@ -24,14 +24,17 @@ namespace WarshipsOnline
             HitAttacksID = new List<string>();  
         }
 
-        public void SetSelectedFileds()
+        public void SetSelectedFileds(List<string> stringID)
         {
-
-        }
-
-        public void AttackMethod()
-        {
-
+            for(int i = 0;i < stringID.Count; i++)
+            {
+                var firstStr = stringID[i].Substring(0,1);
+                var secondStr = stringID[i].Substring(1,1);
+                if(int.TryParse(firstStr,out var first) && int.TryParse(secondStr,out var second))
+                {
+                    OwnFields[first, second] = 1;
+                }
+            }
         }
 
         public void MarineRadar()

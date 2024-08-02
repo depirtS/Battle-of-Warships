@@ -138,6 +138,9 @@
   <data name="ChangeInncorectSettings" xml:space="preserve">
     <value>Zmień nieprawidłowe ustawienia</value>
   </data>
+  <data name="Confrim" xml:space="preserve">
+    <value>Potwierdź wybór</value>
+  </data>
   <data name="CreateGame" xml:space="preserve">
     <value>Stwórz grę</value>
   </data>
@@ -213,6 +216,9 @@
   <data name="LangSelect" xml:space="preserve">
     <value>Wybierz język aplikacji:</value>
   </data>
+  <data name="MarineRadar" xml:space="preserve">
+    <value>Radar morski</value>
+  </data>
   <data name="NameApplication" xml:space="preserve">
     <value>Wojny statków</value>
   </data>
@@ -240,6 +246,12 @@
   <data name="Sea green" xml:space="preserve">
     <value>Morski</value>
   </data>
+  <data name="SeeBoard" xml:space="preserve">
+    <value>Zobacz swoją planszę</value>
+  </data>
+  <data name="SeePlayBoard" xml:space="preserve">
+    <value>Zobacz planszę przeciwnika</value>
+  </data>
   <data name="SelectedAttackFieldColor" xml:space="preserve">
     <value>Wybierz kolor pola wybranego do ataku w grze:</value>
   </data>
@@ -263,6 +275,9 @@
   </data>
   <data name="Sky blue" xml:space="preserve">
     <value>Błękitny</value>
+  </data>
+  <data name="UseMarineRadar" xml:space="preserve">
+    <value>Użyj radaru morskiego</value>
   </data>
   <data name="Violet" xml:space="preserve">
     <value>Fiołkowy</value>

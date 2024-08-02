@@ -18,8 +18,13 @@ public partial class PlayWithBot : ContentPage
         InitializeComponent();
         NavigationPage.SetHasNavigationBar(this, false);
         InitializeBoard();
+
         Player = new Player(sizeOfBoard);
         Bot = new Bot(SizeOfBoard);
+        MarineRadarHeadline.Text = AppResources.MarineRadar;
+        Confrim.Text = AppResources.Confrim;
+        SeeBoard.Text = AppResources.SeeBoard;
+        MarineRadar.Text = AppResources.UseMarineRadar;
     }
 
     private void InitializeBoard()
@@ -93,7 +98,7 @@ public partial class PlayWithBot : ContentPage
         {
             for (int j = 0; j < SizeOfBoard; j++)
             {
-                string buttonName = i + " " + j;
+                string buttonName = $"{i}{j}";
                 var button = new Button
                 {
                     Text = buttonName,
@@ -131,6 +136,20 @@ public partial class PlayWithBot : ContentPage
         timer.Start();
     }
 
+    private void Confrim_Clicked(object sender, EventArgs e)
+    {
+
+    }
+    private void SeeBoard_Clicked(object sender, EventArgs e)
+    {
+
+    }
+
+    private void MarineRadar_Clicked(object sender, EventArgs e)
+    {
+
+    }
+
     private void MainGrid_SizeChanged(object sender, EventArgs e)
     {
         if(BoardAndControls.Width > BoardAndControls.Height)
@@ -138,6 +157,7 @@ public partial class PlayWithBot : ContentPage
             BoardAndControls.Orientation = StackOrientation.Horizontal;
             GridBoard.HeightRequest = BoardAndControls.Width / 2.0 - 50;
             GridBoard.WidthRequest = BoardAndControls.Width / 2 - 50;
+            GameControl.WidthRequest = BoardAndControls.Width / 2;
             if (SizeOfBoard == 7)
             {
                 GridBoard.RowDefinitions[0] = new RowDefinition { Height = new GridLength(0.6, GridUnitType.Star) };
@@ -153,6 +173,7 @@ public partial class PlayWithBot : ContentPage
         else
         {
             BoardAndControls.Orientation = StackOrientation.Vertical;
+            GameControl.WidthRequest = BoardAndControls.Width - 50;
             if (BoardAndControls.Height - BoardAndControls.Width > 600)
                 GridBoard.WidthRequest = BoardAndControls.Height / 2.2 - 50;
             else
@@ -171,5 +192,4 @@ public partial class PlayWithBot : ContentPage
 
         }
     }
-
 }

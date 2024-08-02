@@ -19,9 +19,26 @@
         Grid.RowSpan="3"/>
         <StackLayout Orientation="Horizontal" x:Name="BoardAndControls" Grid.Row ="1">
             <Grid x:Name="GridBoard" Margin="5"></Grid>
-            <ScrollView x:Name="GameControl" Margin="5">
+            <ScrollView x:Name="GameControl" Margin="5" Padding="50,0,0,0">
                 <StackLayout>
-                    <Label Text="I am not work"/>
+                    <Label x:Name="MarineRadarHeadline"
+                           Style="{StaticResource Headline}"/>
+                    <Label x:Name="MarineRadarInfo"
+                           FontSize="20"
+                           Text="xxx*5, xx*2, xxxx*6"
+                           LineBreakMode="WordWrap"/>
+                    <Button
+                        x:Name="Confrim"
+                        Style="{StaticResource MenuButton}"
+                        Clicked="Confrim_Clicked"/>
+                    <Button
+                        x:Name="SeeBoard"
+                        Style="{StaticResource MenuButton}"
+                        Clicked="SeeBoard_Clicked"/>
+                    <Button
+                        x:Name="MarineRadar"
+                        Style="{StaticResource MenuButton}"
+                        Clicked="MarineRadar_Clicked"/>
                 </StackLayout>
             </ScrollView>
         </StackLayout>

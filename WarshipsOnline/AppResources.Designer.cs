@@ -124,6 +124,15 @@ namespace WarshipsOnline {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confrim select.
+        /// </summary>
+        internal static string Confrim {
+            get {
+                return ResourceManager.GetString("Confrim", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create game.
         /// </summary>
         internal static string CreateGame {
@@ -349,6 +358,15 @@ namespace WarshipsOnline {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Marine radar.
+        /// </summary>
+        internal static string MarineRadar {
+            get {
+                return ResourceManager.GetString("MarineRadar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Battle of Warships.
         /// </summary>
         internal static string NameApplication {
@@ -430,6 +448,24 @@ namespace WarshipsOnline {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to See your board.
+        /// </summary>
+        internal static string SeeBoard {
+            get {
+                return ResourceManager.GetString("SeeBoard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to See enemy board.
+        /// </summary>
+        internal static string SeePlayBoard {
+            get {
+                return ResourceManager.GetString("SeePlayBoard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select color for field selected to attack in game:.
         /// </summary>
         internal static string SelectedAttackFieldColor {
@@ -498,6 +534,15 @@ namespace WarshipsOnline {
         internal static string Sky_blue {
             get {
                 return ResourceManager.GetString("Sky blue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use marine radar.
+        /// </summary>
+        internal static string UseMarineRadar {
+            get {
+                return ResourceManager.GetString("UseMarineRadar", resourceCulture);
             }
         }
         

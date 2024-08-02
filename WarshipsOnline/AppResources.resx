@@ -138,6 +138,9 @@
   <data name="ChangeInncorectSettings" xml:space="preserve">
     <value>Change incorrect settings</value>
   </data>
+  <data name="Confrim" xml:space="preserve">
+    <value>Confrim select</value>
+  </data>
   <data name="CreateGame" xml:space="preserve">
     <value>Create game</value>
   </data>
@@ -213,6 +216,9 @@
   <data name="LangSelect" xml:space="preserve">
     <value>Select application language:</value>
   </data>
+  <data name="MarineRadar" xml:space="preserve">
+    <value>Marine radar</value>
+  </data>
   <data name="NameApplication" xml:space="preserve">
     <value>Battle of Warships</value>
   </data>
@@ -240,6 +246,12 @@
   <data name="Sea green" xml:space="preserve">
     <value>Sea green</value>
   </data>
+  <data name="SeeBoard" xml:space="preserve">
+    <value>See your board</value>
+  </data>
+  <data name="SeePlayBoard" xml:space="preserve">
+    <value>See enemy board</value>
+  </data>
   <data name="SelectedAttackFieldColor" xml:space="preserve">
     <value>Select color for field selected to attack in game:</value>
   </data>
@@ -263,6 +275,9 @@
   </data>
   <data name="Sky blue" xml:space="preserve">
     <value>Sky blue</value>
+  </data>
+  <data name="UseMarineRadar" xml:space="preserve">
+    <value>Use marine radar</value>
   </data>
   <data name="Violet" xml:space="preserve">
     <value>Violet</value>
