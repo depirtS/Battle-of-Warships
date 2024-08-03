@@ -279,6 +279,9 @@
   <data name="Sky blue" xml:space="preserve">
     <value>Sky blue</value>
   </data>
+  <data name="Turn" xml:space="preserve">
+    <value>Player no.'s turn: </value>
+  </data>
   <data name="UseMarineRadar" xml:space="preserve">
     <value>Use marine radar</value>
   </data>

@@ -547,6 +547,15 @@ namespace WarshipsOnline {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Player no.&apos;s turn: .
+        /// </summary>
+        internal static string Turn {
+            get {
+                return ResourceManager.GetString("Turn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use marine radar.
         /// </summary>
         internal static string UseMarineRadar {
