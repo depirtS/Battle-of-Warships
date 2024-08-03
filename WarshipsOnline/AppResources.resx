@@ -141,6 +141,9 @@
   <data name="Confrim" xml:space="preserve">
     <value>Confrim select</value>
   </data>
+  <data name="CountShip" xml:space="preserve">
+    <value>Number of ship locations to choose from: </value>
+  </data>
   <data name="CreateGame" xml:space="preserve">
     <value>Create game</value>
   </data>

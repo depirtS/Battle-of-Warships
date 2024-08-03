@@ -4,6 +4,7 @@ public partial class PlayWithBot : ContentPage
 {
     private int SizeOfBoard { get; set; }
     private int CountOfShip { get; set; }
+    private int HandCountOfShip { get; set; }
     private int TimeOfRound { get; set; }
     private Player Player { get; set; }
     private Bot Bot { get; set; }
@@ -11,6 +12,13 @@ public partial class PlayWithBot : ContentPage
     private bool PlayerTurn {  get; set; }
     private IDispatcherTimer Timer { get; set; }
     private Dictionary<string, Button> ButtonDictionary { get; set; }
+    private Color FieldColor {  get; set; }
+    private Color ShipColor {  get; set; }
+    private Color AttackedFieldColor { get; set; }
+    private Color EmptyFieldColor { get; set; }
+    private Color SelectedAttackFieldColor { get; set; }
+    private List<string> FieldNames { get; set; }
+
     public PlayWithBot(int sizeOfBoard, int countOfShip, int timeOfRound)
     {
         SizeOfBoard = sizeOfBoard;
@@ -20,15 +28,29 @@ public partial class PlayWithBot : ContentPage
         GlobalManager.SetCulture(GlobalManager.CultureCode);
         InitializeComponent();
         NavigationPage.SetHasNavigationBar(this, false);
+        InitializeValues();
         InitializeBoard();
         InitializeTimer();
 
-        Player = new Player(sizeOfBoard);
+    }
+    private void InitializeValues()
+    {
+        FieldNames = new List<string>();
+        SelectShip = true;
+        PlayerTurn = true;
+        HandCountOfShip = CountOfShip;
+        Player = new Player(SizeOfBoard);
         Bot = new Bot(SizeOfBoard);
         MarineRadarHeadline.Text = AppResources.MarineRadar;
         Confrim.Text = AppResources.Confrim;
         SeeBoard.Text = AppResources.SeeBoard;
         MarineRadar.Text = AppResources.UseMarineRadar;
+        MarineRadarInfo.Text = AppResources.CountShip + CountOfShip;
+        FieldColor = Color.FromArgb(Preferences.Get("FieldColor", Colors.Gray.ToHex()));
+        ShipColor = Color.FromArgb(Preferences.Get("ShipColor", Colors.Yellow.ToHex()));
+        AttackedFieldColor = Color.FromArgb(Preferences.Get("AttackedFieldColor", Colors.Red.ToHex()));
+        EmptyFieldColor = Color.FromArgb(Preferences.Get("EmptyFieldColor", Colors.DarkRed.ToHex()));
+        SelectedAttackFieldColor = Color.FromArgb(Preferences.Get("SelectedAttackFieldColor", Colors.Orange.ToHex()));
     }
 
     private void InitializeBoard()
@@ -108,7 +130,7 @@ public partial class PlayWithBot : ContentPage
                     Text = buttonName,
                     StyleId = buttonName,
                     TextColor = Colors.Transparent,
-                    BackgroundColor = Colors.Gray,
+                    BackgroundColor = FieldColor,
                     CornerRadius = 3,
                     MinimumHeightRequest = 0,
                     MinimumWidthRequest = 0,
@@ -194,9 +216,34 @@ public partial class PlayWithBot : ContentPage
         Button button = (Button)sender;
         if (SelectShip)
         {
+            if(button.BackgroundColor == FieldColor && HandCountOfShip > 0)
+            {
+                HandCountOfShip--;
+                FieldNames.Add(button.Text);
+                button.BackgroundColor = SelectedAttackFieldColor;
+                MarineRadarInfo.Text = AppResources.CountShip + HandCountOfShip;
+            }
+            else if(button.BackgroundColor == SelectedAttackFieldColor)
+            {
+                HandCountOfShip++;
+                FieldNames.Remove(button.Text);
+                button.BackgroundColor = FieldColor;
+                MarineRadarInfo.Text = AppResources.CountShip + HandCountOfShip;
+            }
+        }
+        else
+        {
+
+        }
+    }
+
+    private void Confrim_Clicked(object sender, EventArgs e)
+    {
+        if (SelectShip)
+        {
             if (PlayerTurn)
             {
-
+                
             }
             else
             {
@@ -214,11 +261,6 @@ public partial class PlayWithBot : ContentPage
 
             }
         }
-    }
-
-    private void Confrim_Clicked(object sender, EventArgs e)
-    {
-
     }
     private void SeeBoard_Clicked(object sender, EventArgs e)
     {

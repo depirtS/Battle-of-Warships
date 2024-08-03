@@ -141,6 +141,9 @@
   <data name="Confrim" xml:space="preserve">
     <value>Potwierdź wybór</value>
   </data>
+  <data name="CountShip" xml:space="preserve">
+    <value>Liczba lokalizacji statków do wyboru: </value>
+  </data>
   <data name="CreateGame" xml:space="preserve">
     <value>Stwórz grę</value>
   </data>

@@ -133,6 +133,15 @@ namespace WarshipsOnline {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Number of ship locations to choose from: .
+        /// </summary>
+        internal static string CountShip {
+            get {
+                return ResourceManager.GetString("CountShip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create game.
         /// </summary>
         internal static string CreateGame {
