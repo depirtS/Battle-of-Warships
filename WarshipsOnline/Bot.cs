@@ -13,10 +13,17 @@ namespace WarshipsOnline
         {
             random = new Random();
         }
-        
-        public void SelectRandomAttackFields()
-        {
 
+        public string SelectRandomAttackFields(Player player)
+        {
+            var first = random.Next(0, sizeOfBoard);
+            var second = random.Next(0, sizeOfBoard);
+            while (player.OwnFields[first, second] != 0 && player.OwnFields[first, second] != 1)
+            {
+                first = random.Next(0, sizeOfBoard);
+                second = random.Next(0, sizeOfBoard);
+            }
+            return $"{first}{second}";
         }
     }
 }
