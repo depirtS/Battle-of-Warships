@@ -35,7 +35,8 @@ public partial class PlayWithBot : ContentPage
         bool anserw = await DisplayAlert(AppResources.Attention, AppResources.CreateGameExitAlert, AppResources.Yes, AppResources.No);
         if (anserw)
             GlobalManager.LoadingOverlay(LoadingOverlay, Navigation);
-        GamePaused = false;
+        else
+            GamePaused = false;
     }
 
     public PlayWithBot(int sizeOfBoard, int countOfShip, int timeOfRound)
@@ -201,7 +202,7 @@ public partial class PlayWithBot : ContentPage
                         SelectRandomShipLocation(Player);
                         NextPlayerAlert("2", Bot);
                         HandTimeOfRound = 0;
-                        BotRadar = Player.MarineRadar();
+                        BotRadar = "Bot turn: " + Player.MarineRadar();
                     }
                     else
                     {
@@ -210,7 +211,7 @@ public partial class PlayWithBot : ContentPage
                         SelectRandomShipLocation(Bot);
                         NextPlayerAlert("1", Player);
                         HandTimeOfRound = TimeOfRound;
-                        PlayerRadar = Bot.MarineRadar();
+                        PlayerRadar = "Player turn: " + Bot.MarineRadar();
                     }
                 }
                 else
@@ -253,9 +254,9 @@ public partial class PlayWithBot : ContentPage
         int sec = HandTimeOfRound % 60;
         if (min < 10 && sec < 10)
             SeeTimer.Text = $"0{min}:0{sec}";
-        else if (min < 10 && sec > 10)
+        else if (min < 10 && sec > 9)
             SeeTimer.Text = $"0{min}:{sec}";
-        else if (min > 10 && sec < 10)
+        else if (min > 9 && sec > 9)
             SeeTimer.Text = $"{min}:{sec}";
     }
 
@@ -344,7 +345,7 @@ public partial class PlayWithBot : ContentPage
         MarineRadarInfo.Text = AppResources.CountShip + CountOfShip;
         HandTimeOfRound = 0;
         NextPlayerAlert("2", Bot);
-        BotRadar = Player.MarineRadar();
+        BotRadar = "Bot turn: " + Player.MarineRadar();
     }
     private void PlayerAttackSelectedField()
     {
@@ -437,29 +438,58 @@ public partial class PlayWithBot : ContentPage
 
     private async void NextPlayerAlert(string playerNumber, Player player)
     {
+        var gameNoEnd = true;
         GamePaused = true;
-        if (SelectShip)
+        if (!SelectShip)
         {
-            foreach (var button in ButtonDictionary.Values)
+            if (TestEndGame(Player))
             {
-                button.BackgroundColor = FieldColor;
+                gameNoEnd = false;
+                await DisplayAlert(AppResources.Attention, AppResources.WinBot, "OK");
+                GlobalManager.LoadingOverlay(LoadingOverlay, Navigation);
             }
-            await DisplayAlert(AppResources.Attention, $"{AppResources.Turn}{playerNumber}", "OK");
-            GamePaused = false;
-        }
-        else
-        {
-            GamePaused = false;
-            await DisplayAlert(AppResources.Attention, $"{AppResources.Turn}{playerNumber}", "OK");
-            if (PlayerTurn)
+            if (TestEndGame(Bot))
             {
-                MarineRadarInfo.Text = PlayerRadar;
+                gameNoEnd = false;
+                await DisplayAlert(AppResources.Attention, AppResources.WinPlayerOne, "OK");
+                GlobalManager.LoadingOverlay(LoadingOverlay, Navigation);
+            }
+        }
+
+        if (gameNoEnd)
+        {
+            if (SelectShip)
+            {
+                foreach (var button in ButtonDictionary.Values)
+                {
+                    button.BackgroundColor = FieldColor;
+                }
+                await DisplayAlert(AppResources.Attention, $"{AppResources.Turn}{playerNumber}", "OK");
+                GamePaused = false;
             }
             else
             {
-                BotAttackAnimated();
+                await DisplayAlert(AppResources.Attention, $"{AppResources.Turn}{playerNumber}", "OK");
+                GamePaused = false;
+                if (PlayerTurn)
+                {
+                    MarineRadarInfo.Text = PlayerRadar;
+                }
+                else
+                {
+                    BotAttackAnimated();
+                }
             }
         }
+    }
+
+    private bool TestEndGame(Player player)
+    {
+        for (int i = 0; i < SizeOfBoard; i++)
+            for (int j = 0; j < SizeOfBoard; j++)
+                if (player.OwnFields[i, j] == 1)
+                    return false;
+        return true;
     }
 
     private void BotAttackAnimated()
@@ -472,13 +502,16 @@ public partial class PlayWithBot : ContentPage
         timer.Interval = TimeSpan.FromSeconds(random.Next(3, 7));
         timer.Tick += (s, e) =>
         {
-            SeePlayBoard(Bot);
-            AttackField(Player);
-            NextPlayerAlert("1", Player);
-            PlayerTurn = true;
-            HandTimeOfRound = TimeOfRound;
-            UpdateTimer();
-            timer.Stop();
+            if (!GamePaused)
+            {
+                SeePlayBoard(Bot);
+                AttackField(Player);
+                NextPlayerAlert("1", Player);
+                PlayerTurn = true;
+                HandTimeOfRound = TimeOfRound;
+                UpdateTimer();
+                timer.Stop();
+            }
         };
         timer.Start();
     }

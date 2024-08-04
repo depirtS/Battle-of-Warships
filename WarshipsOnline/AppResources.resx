@@ -180,6 +180,9 @@
   <data name="EmptyFieldColor" xml:space="preserve">
     <value>Select color for empty enemy field in game:</value>
   </data>
+  <data name="EndGame" xml:space="preserve">
+    <value>End of the game</value>
+  </data>
   <data name="English" xml:space="preserve">
     <value>English</value>
   </data>
@@ -287,6 +290,15 @@
   </data>
   <data name="Violet" xml:space="preserve">
     <value>Violet</value>
+  </data>
+  <data name="WinBot" xml:space="preserve">
+    <value>Bot won</value>
+  </data>
+  <data name="WinPlayerOne" xml:space="preserve">
+    <value>Player one won</value>
+  </data>
+  <data name="WinPlayerTwo" xml:space="preserve">
+    <value>Player two won</value>
   </data>
   <data name="WithBot" xml:space="preserve">
     <value>Game with a bot</value>

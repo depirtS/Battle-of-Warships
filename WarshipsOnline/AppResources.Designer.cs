@@ -250,6 +250,15 @@ namespace WarshipsOnline {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to End of the game.
+        /// </summary>
+        internal static string EndGame {
+            get {
+                return ResourceManager.GetString("EndGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to English.
         /// </summary>
         internal static string English {
@@ -570,6 +579,33 @@ namespace WarshipsOnline {
         internal static string Violet {
             get {
                 return ResourceManager.GetString("Violet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bot won.
+        /// </summary>
+        internal static string WinBot {
+            get {
+                return ResourceManager.GetString("WinBot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player one won.
+        /// </summary>
+        internal static string WinPlayerOne {
+            get {
+                return ResourceManager.GetString("WinPlayerOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player two won.
+        /// </summary>
+        internal static string WinPlayerTwo {
+            get {
+                return ResourceManager.GetString("WinPlayerTwo", resourceCulture);
             }
         }
         

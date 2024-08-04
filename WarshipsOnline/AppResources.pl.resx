@@ -180,6 +180,9 @@
   <data name="EmptyFieldColor" xml:space="preserve">
     <value>Wybierz kolor pustego pola wroga w grze:</value>
   </data>
+  <data name="EndGame" xml:space="preserve">
+    <value>Koniec gry</value>
+  </data>
   <data name="English" xml:space="preserve">
     <value>Angielski</value>
   </data>
@@ -287,6 +290,15 @@
   </data>
   <data name="Violet" xml:space="preserve">
     <value>Fiołkowy</value>
+  </data>
+  <data name="WinBot" xml:space="preserve">
+    <value>Wygrał bot</value>
+  </data>
+  <data name="WinPlayerOne" xml:space="preserve">
+    <value>Wygrał gracz pierwszy</value>
+  </data>
+  <data name="WinPlayerTwo" xml:space="preserve">
+    <value>Wygrał gracz drugi</value>
   </data>
   <data name="WithBot" xml:space="preserve">
     <value>Gra z botem</value>
