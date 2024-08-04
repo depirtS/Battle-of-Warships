@@ -24,15 +24,15 @@ namespace WarshipsOnline
             HitAttacksID = new List<string>();  
         }
 
-        public void SetSelectedFileds(List<string> stringID)
+        public void SetSelectedFileds(List<string> stringButtonsID)
         {
-            for(int i = 0;i < stringID.Count; i++)
+            for(int i = 0;i < stringButtonsID.Count; i++)
             {
-                var firstStr = stringID[i].Substring(0,1);
-                var secondStr = stringID[i].Substring(1,1);
-                if(int.TryParse(firstStr,out var first) && int.TryParse(secondStr,out var second))
+                var rowIDStr = stringButtonsID[i].Substring(0,1);
+                var columnIDStr = stringButtonsID[i].Substring(1,1);
+                if(int.TryParse(rowIDStr,out var first) && int.TryParse(columnIDStr, out var columnID))
                 {
-                    OwnFields[first, second] = 1;
+                    OwnFields[first, columnID] = 1;
                 }
             }
         }

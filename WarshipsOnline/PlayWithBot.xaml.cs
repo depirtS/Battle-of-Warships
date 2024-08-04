@@ -40,7 +40,6 @@ public partial class PlayWithBot : ContentPage
 
     public PlayWithBot(int sizeOfBoard, int countOfShip, int timeOfRound)
     {
-        GamePaused = false;
         SizeOfBoard = sizeOfBoard;
         CountOfShip = countOfShip;
         TimeOfRound = timeOfRound;
@@ -55,6 +54,7 @@ public partial class PlayWithBot : ContentPage
     }
     private void InitializeValues()
     {
+        GamePaused = false;
         FieldNames = new List<string>();
         SelectShip = true;
         PlayerTurn = true;
@@ -184,69 +184,63 @@ public partial class PlayWithBot : ContentPage
 
     private void InitializeTimer()
     {
-        int handTestTime = 0;
         HandTimeOfRound = TimeOfRound;
         Timer = Dispatcher.CreateTimer();
-        Timer.Interval = TimeSpan.FromSeconds(0.1);
+        Timer.Interval = TimeSpan.FromSeconds(1);
         Timer.Tick += (s, e) =>
         {
-            handTestTime++;
-            if (handTestTime == 10)
+            if (HandTimeOfRound == 0)
             {
-                handTestTime = 0;
-                if (HandTimeOfRound == 0)
+                HandTimeOfRound = TimeOfRound;
+                if (SelectShip)
                 {
-                    HandTimeOfRound = TimeOfRound;
-                    if (SelectShip)
+                    if (PlayerTurn)
                     {
-                        if (PlayerTurn)
-                        {
-                            HandCountOfShip = CountOfShip;
-                            PlayerTurn = false;
-                            SelectRandomShipLocation(Player);
-                            NextPlayerAlert("2", Bot);
-                            HandTimeOfRound = 0;
-                            BotRadar = Player.MarineRadar();
-                        }
-                        else
-                        {
-                            PlayerTurn = true;
-                            SelectShip = false;
-                            SelectRandomShipLocation(Bot);
-                            NextPlayerAlert("1", Player);
-                            HandTimeOfRound = TimeOfRound;
-                            PlayerRadar = Bot.MarineRadar();
-                        }
+                        HandCountOfShip = CountOfShip;
+                        PlayerTurn = false;
+                        SelectRandomShipLocation(Player);
+                        NextPlayerAlert("2", Bot);
+                        HandTimeOfRound = 0;
+                        BotRadar = Player.MarineRadar();
                     }
                     else
                     {
-                        if (PlayerTurn)
-                        {
-                            Random random = new Random();
-                            var first = random.Next(0, SizeOfBoard);
-                            var second = random.Next(0, SizeOfBoard);
-                            while (Bot.OwnFields[first, second] != 0 && Bot.OwnFields[first, second] != 1)
-                            {
-                                first = random.Next(0, SizeOfBoard);
-                                second = random.Next(0, SizeOfBoard);
-                            }
-                            HandSelectAttackButton = ButtonDictionary[$"{first}{second}"];
-                            SeePlayBoard(Player);
-                            AttackField(Bot);
-                            PlayerTurn = false;
-                            HandTimeOfRound = TimeOfRound;
-                            UpdateTimer();
-                            NextPlayerAlert("2", Bot);
-                        }
+                        PlayerTurn = true;
+                        SelectShip = false;
+                        SelectRandomShipLocation(Bot);
+                        NextPlayerAlert("1", Player);
+                        HandTimeOfRound = TimeOfRound;
+                        PlayerRadar = Bot.MarineRadar();
                     }
                 }
                 else
                 {
-                    if (!GamePaused)
+                    if (PlayerTurn)
                     {
+                        Random random = new Random();
+                        var rowID = random.Next(0, SizeOfBoard);
+                        var columnID = random.Next(0, SizeOfBoard);
+                        while (Bot.OwnFields[rowID, columnID] != 0 && Bot.OwnFields[rowID, columnID] != 1)
+                        {
+                            rowID = random.Next(0, SizeOfBoard);
+                            columnID = random.Next(0, SizeOfBoard);
+                        }
+                        HandSelectAttackButton = ButtonDictionary[$"{rowID}{columnID}"];
+                        SeePlayBoard(Player);
+                        AttackField(Bot);
+                        PlayerTurn = false;
+                        HandTimeOfRound = TimeOfRound;
                         UpdateTimer();
-                        HandTimeOfRound--;
+                        NextPlayerAlert("2", Bot);
                     }
+                }
+            }
+            else
+            {
+                if (!GamePaused)
+                {
+                    UpdateTimer();
+                    HandTimeOfRound--;
                 }
             }
         };
@@ -272,39 +266,49 @@ public partial class PlayWithBot : ContentPage
         {
             if (SelectShip)
             {
-                if (HandCountOfShip > 0 && button.BackgroundColor == FieldColor)
-                {
-                    HandCountOfShip--;
-                    FieldNames.Add(button.Text);
-                    button.BackgroundColor = SelectedAttackFieldColor;
-                    MarineRadarInfo.Text = AppResources.CountShip + HandCountOfShip;
-                }
-                else if (button.BackgroundColor == SelectedAttackFieldColor)
-                {
-                    HandCountOfShip++;
-                    FieldNames.Remove(button.Text);
-                    button.BackgroundColor = FieldColor;
-                    MarineRadarInfo.Text = AppResources.CountShip + HandCountOfShip;
-                }
+                ShipStageSelectField(button);
             }
             else
             {
-                if (button.BackgroundColor != AttackedFieldColor || button.BackgroundColor != SelectedAttackFieldColor || button.BackgroundColor != EmptyFieldColor)
+                AttackStageSelectField(button);
+            }
+        }
+    }
+
+    private void ShipStageSelectField(Button button)
+    {
+        if (HandCountOfShip > 0 && button.BackgroundColor == FieldColor)
+        {
+            HandCountOfShip--;
+            FieldNames.Add(button.Text);
+            button.BackgroundColor = SelectedAttackFieldColor;
+            MarineRadarInfo.Text = AppResources.CountShip + HandCountOfShip;
+        }
+        else if (button.BackgroundColor == SelectedAttackFieldColor)
+        {
+            HandCountOfShip++;
+            FieldNames.Remove(button.Text);
+            button.BackgroundColor = FieldColor;
+            MarineRadarInfo.Text = AppResources.CountShip + HandCountOfShip;
+        }
+    }
+
+    private void AttackStageSelectField(Button button)
+    {
+        if (button.BackgroundColor != AttackedFieldColor || button.BackgroundColor != SelectedAttackFieldColor || button.BackgroundColor != EmptyFieldColor)
+        {
+            if (SeeBoard.Text == AppResources.SeeBoard && button.BackgroundColor == FieldColor)
+            {
+                if (HandSelectAttackButton != null)
                 {
-                    if(SeeBoard.Text == AppResources.SeeBoard && button.BackgroundColor == FieldColor)
-                    {
-                        if (HandSelectAttackButton != null)
-                        {
-                            HandSelectAttackButton.BackgroundColor = FieldColor;
-                            HandSelectAttackButton = button;
-                            HandSelectAttackButton.BackgroundColor = SelectedAttackFieldColor;
-                        }
-                        else
-                        {
-                            HandSelectAttackButton = button;
-                            HandSelectAttackButton.BackgroundColor = SelectedAttackFieldColor;
-                        }
-                    }
+                    HandSelectAttackButton.BackgroundColor = FieldColor;
+                    HandSelectAttackButton = button;
+                    HandSelectAttackButton.BackgroundColor = SelectedAttackFieldColor;
+                }
+                else
+                {
+                    HandSelectAttackButton = button;
+                    HandSelectAttackButton.BackgroundColor = SelectedAttackFieldColor;
                 }
             }
         }
@@ -318,34 +322,43 @@ public partial class PlayWithBot : ContentPage
             {
                 if (HandCountOfShip == 0)
                 {
-                    HandCountOfShip = CountOfShip;
-                    PlayerTurn = false;
-                    Player.SetSelectedFileds(FieldNames);
-                    FieldNames = new List<string>();
-                    MarineRadarInfo.Text = AppResources.CountShip + CountOfShip;
-                    HandTimeOfRound = 0;
-                    NextPlayerAlert("2", Bot);
-                    BotRadar = Player.MarineRadar();
+                    PlayerSetSelectedShipLocation();
                 }
             }
             else
             {
-                if(HandSelectAttackButton != null)
+                if (HandSelectAttackButton != null)
                 {
-                    SeePlayBoard(Player);
-                    AttackField(Bot);
-                    PlayerTurn = false;
-                    HandTimeOfRound = TimeOfRound;
-                    UpdateTimer();
-                    NextPlayerAlert("2", Bot);
+                    PlayerAttackSelectedField();
                 }
 
             }
         }
     }
+    private void PlayerSetSelectedShipLocation()
+    {
+        HandCountOfShip = CountOfShip;
+        PlayerTurn = false;
+        Player.SetSelectedFileds(FieldNames);
+        FieldNames = new List<string>();
+        MarineRadarInfo.Text = AppResources.CountShip + CountOfShip;
+        HandTimeOfRound = 0;
+        NextPlayerAlert("2", Bot);
+        BotRadar = Player.MarineRadar();
+    }
+    private void PlayerAttackSelectedField()
+    {
+        SeePlayBoard(Player);
+        AttackField(Bot);
+        PlayerTurn = false;
+        HandTimeOfRound = TimeOfRound;
+        UpdateTimer();
+        NextPlayerAlert("2", Bot);
+    }
 
     private void SeeBoard_Clicked(object sender, EventArgs e)
-    {   if(PlayerTurn)
+    {
+        if (PlayerTurn && !SelectShip)
         {
             Button button = (Button)sender;
             if (button.Text == AppResources.SeeBoard && PlayerTurn)
@@ -368,14 +381,14 @@ public partial class PlayWithBot : ContentPage
 
     private void AttackField(Player player)
     {
-        var firstStr = HandSelectAttackButton.Text.Substring(0, 1);
-        var secondStr = HandSelectAttackButton.Text.Substring(1, 1);
-        if (int.TryParse(firstStr, out var first) && int.TryParse(secondStr, out var second))
+        var rowIDStr = HandSelectAttackButton.Text.Substring(0, 1);
+        var columnIDStr = HandSelectAttackButton.Text.Substring(1, 1);
+        if (int.TryParse(rowIDStr, out var rowID) && int.TryParse(columnIDStr, out var columnID))
         {
-            if (player.OwnFields[first, second] == 1)
-                player.OwnFields[first, second] = 3;
-            else if (Bot.OwnFields[first, second] == 0)
-                player.OwnFields[first, second] = 2;
+            if (player.OwnFields[rowID, columnID] == 1)
+                player.OwnFields[rowID, columnID] = 3;
+            else if (player.OwnFields[rowID, columnID] == 0)
+                player.OwnFields[rowID, columnID] = 2;
         }
         HandSelectAttackButton = null;
     }
@@ -436,33 +449,38 @@ public partial class PlayWithBot : ContentPage
         }
         else
         {
-            await DisplayAlert(AppResources.Attention, $"{AppResources.Turn}{playerNumber}", "OK");
             GamePaused = false;
+            await DisplayAlert(AppResources.Attention, $"{AppResources.Turn}{playerNumber}", "OK");
             if (PlayerTurn)
             {
                 MarineRadarInfo.Text = PlayerRadar;
             }
             else
             {
-                MarineRadarInfo.Text = BotRadar;
-                HandSelectAttackButton = ButtonDictionary[Bot.SelectRandomAttackFields(Player)];
-                HandSelectAttackButton.BackgroundColor = SelectedAttackFieldColor;
-                Random random = new Random();
-                var timer = Dispatcher.CreateTimer();
-                timer.Interval = TimeSpan.FromSeconds(random.Next(3, 7));
-                timer.Tick += (s, e) =>
-                {
-                    SeePlayBoard(Bot);
-                    AttackField(Player);
-                    NextPlayerAlert("1", Player);
-                    PlayerTurn = true;
-                    HandTimeOfRound = TimeOfRound;
-                    UpdateTimer();
-                    timer.Stop();
-                };
-                timer.Start();
+                BotAttackAnimated();
             }
         }
+    }
+
+    private void BotAttackAnimated()
+    {
+        MarineRadarInfo.Text = BotRadar;
+        HandSelectAttackButton = ButtonDictionary[Bot.SelectRandomAttackFields(Player)];
+        HandSelectAttackButton.BackgroundColor = SelectedAttackFieldColor;
+        Random random = new Random();
+        var timer = Dispatcher.CreateTimer();
+        timer.Interval = TimeSpan.FromSeconds(random.Next(3, 7));
+        timer.Tick += (s, e) =>
+        {
+            SeePlayBoard(Bot);
+            AttackField(Player);
+            NextPlayerAlert("1", Player);
+            PlayerTurn = true;
+            HandTimeOfRound = TimeOfRound;
+            UpdateTimer();
+            timer.Stop();
+        };
+        timer.Start();
     }
 
     private void MainGrid_SizeChanged(object sender, EventArgs e)
