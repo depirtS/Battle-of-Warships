@@ -213,6 +213,9 @@
   <data name="Green" xml:space="preserve">
     <value>Green</value>
   </data>
+  <data name="HowManyUseMarineRadar" xml:space="preserve">
+    <value>How many use marine radar: </value>
+  </data>
   <data name="HowPlay" xml:space="preserve">
     <value>How to play?</value>
   </data>

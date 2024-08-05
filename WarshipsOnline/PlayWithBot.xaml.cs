@@ -7,6 +7,7 @@ public partial class PlayWithBot : ContentPage
     private int HandCountOfShip { get; set; }
     private int TimeOfRound { get; set; }
     private int HandTimeOfRound { get; set; }
+    private int AmountUseMarineRadar { get; set; }
     private string PlayerRadar { get; set; }
     private string BotRadar { get; set; }
     private Player Player { get; set; }
@@ -39,11 +40,12 @@ public partial class PlayWithBot : ContentPage
             GamePaused = false;
     }
 
-    public PlayWithBot(int sizeOfBoard, int countOfShip, int timeOfRound)
+    public PlayWithBot(int sizeOfBoard, int countOfShip, int timeOfRound, int amountUseMarineRadar)
     {
         SizeOfBoard = sizeOfBoard;
         CountOfShip = countOfShip;
         TimeOfRound = timeOfRound;
+        AmountUseMarineRadar = amountUseMarineRadar;
         ButtonDictionary = new Dictionary<string, Button>();
         GlobalManager.SetCulture(GlobalManager.CultureCode);
         InitializeComponent();

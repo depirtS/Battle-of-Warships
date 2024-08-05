@@ -56,6 +56,15 @@
                     Margin="0,5,0,5"/>
 
                 <Label
+                    x:Name="HowManyUseMarineRadar"
+                    Margin="10"/>
+                <Slider
+                    DragCompleted="HowManyUseMarineRadar_DragCompleted"
+                    Minimum="0"
+                    Maximum="5"
+                    Margin="0,5,0,5"/>
+
+                <Label
                     x:Name="RoundTime"
                     Margin="10"/>
                 <Slider

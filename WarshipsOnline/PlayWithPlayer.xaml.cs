@@ -5,11 +5,13 @@ public partial class PlayWithPlayer : ContentPage
     private int SizeOfBoard { get; set; }
     private int CountOfShip { get; set; }
     private int TimeOfRound { get; set; }
-    public PlayWithPlayer(int sizeOfBoard, int countOfShip, int timeOfRound)
+    private int AmountUseMarineRadar { get; set; }
+    public PlayWithPlayer(int sizeOfBoard, int countOfShip, int timeOfRound, int amountUseMarineRadar)
 	{
         SizeOfBoard = sizeOfBoard;
         CountOfShip = countOfShip;
         TimeOfRound = timeOfRound;
+        AmountUseMarineRadar = amountUseMarineRadar;
         GlobalManager.SetCulture(GlobalManager.CultureCode);
         InitializeComponent();
         NavigationPage.SetHasNavigationBar(this, false);

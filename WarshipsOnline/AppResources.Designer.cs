@@ -349,6 +349,15 @@ namespace WarshipsOnline {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to How many use marine radar: .
+        /// </summary>
+        internal static string HowManyUseMarineRadar {
+            get {
+                return ResourceManager.GetString("HowManyUseMarineRadar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to How to play?.
         /// </summary>
         internal static string HowPlay {

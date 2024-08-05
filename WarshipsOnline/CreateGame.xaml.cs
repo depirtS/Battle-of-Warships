@@ -20,6 +20,7 @@ public partial class CreateGame : ContentPage
     private int SizeOfBoard { get; set; }
     private int CountOfShip { get; set; }
     private int TimeOfRound { get; set; }
+    private int AmountUseMarineRadar { get; set; }
 
     public CreateGame()
     {
@@ -35,6 +36,7 @@ public partial class CreateGame : ContentPage
 
     private void InitializeStartValues()
     {
+        AmountUseMarineRadar = 0;
         SelectGamemode.SelectedIndex = 0;
         SizeOfBoard = CountOfShip = 3;
         TimeOfRound = 120;
@@ -49,6 +51,7 @@ public partial class CreateGame : ContentPage
         BoardSize.Text = AppResources.BoardSize + SizeOfBoard + "x" + SizeOfBoard;
         ShipCount.Text = AppResources.ShipCount + CountOfShip;
         RoundTime.Text = AppResources.RoundTime + TimeOfRound +"s";
+        HowManyUseMarineRadar.Text = AppResources.HowManyUseMarineRadar + AmountUseMarineRadar;
         CreateGameBtn.Text = AppResources.CreateGame;
     }
 
@@ -77,16 +80,23 @@ public partial class CreateGame : ContentPage
         RoundTime.Text = AppResources.RoundTime + TimeOfRound + "s";
     }
 
+    private void HowManyUseMarineRadar_DragCompleted(object sender, EventArgs e)
+    {
+        Slider slider = (Slider)sender;
+        AmountUseMarineRadar = (int)slider.Value;
+        HowManyUseMarineRadar.Text = AppResources.HowManyUseMarineRadar + AmountUseMarineRadar;
+    }
+
     private void CreateGameBtn_Clicked(object sender, EventArgs e)
     {
         int gamemodeID = SelectGamemode.SelectedIndex;
         switch(gamemodeID)
         {
             case 0:
-                GlobalManager.LoadingOverlay(LoadingOverlay, Navigation, new PlayWithPlayer(SizeOfBoard,CountOfShip,TimeOfRound));
+                GlobalManager.LoadingOverlay(LoadingOverlay, Navigation, new PlayWithPlayer(SizeOfBoard,CountOfShip,TimeOfRound, AmountUseMarineRadar));
                 break;
             case 1:
-                GlobalManager.LoadingOverlay(LoadingOverlay, Navigation, new PlayWithBot(SizeOfBoard, CountOfShip, TimeOfRound));
+                GlobalManager.LoadingOverlay(LoadingOverlay, Navigation, new PlayWithBot(SizeOfBoard, CountOfShip, TimeOfRound, AmountUseMarineRadar));
                 break;
             default:
                 DisplayAlert("Error", "Select gamemode not found", "OK"); //TODO: You want play with bot? if yes = start round with bot else close alert
