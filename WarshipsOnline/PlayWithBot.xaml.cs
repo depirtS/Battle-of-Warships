@@ -62,12 +62,12 @@ public partial class PlayWithBot : ContentPage
         SelectShip = true;
         PlayerTurn = true;
         HandCountOfShip = CountOfShip;
-        Player = new Player(SizeOfBoard);
-        Bot = new Bot(SizeOfBoard);
+        Player = new Player(SizeOfBoard, AmountUseMarineRadar);
+        Bot = new Bot(SizeOfBoard, AmountUseMarineRadar);
         MarineRadarHeadline.Text = AppResources.MarineRadar;
         Confrim.Text = AppResources.Confrim;
         SeeBoard.Text = AppResources.SeeBoard;
-        MarineRadar.Text = AppResources.UseMarineRadar;
+        MarineRadar.Text = AppResources.UseMarineRadar + $": {AmountUseMarineRadar}";
         MarineRadarInfo.Text = AppResources.CountShip + CountOfShip;
         FieldColor = Color.FromArgb(Preferences.Get("FieldColor", Colors.Gray.ToHex()));
         ShipColor = Color.FromArgb(Preferences.Get("ShipColor", Colors.Yellow.ToHex()));
@@ -171,7 +171,6 @@ public partial class PlayWithBot : ContentPage
 
                 Grid.SetRow(button, i + 1);
                 Grid.SetColumn(button, j + 1);
-
             }
         }
 
@@ -214,6 +213,7 @@ public partial class PlayWithBot : ContentPage
                         NextPlayerAlert("1", Player);
                         HandTimeOfRound = TimeOfRound;
                         PlayerRadar = "Player turn: " + Bot.MarineRadar();
+                        MarineRadar.Text = AppResources.UseMarineRadar + $": {Player.CountUseMarineRadar}";
                     }
                 }
                 else
@@ -379,7 +379,16 @@ public partial class PlayWithBot : ContentPage
 
     private void MarineRadar_Clicked(object sender, EventArgs e)
     {
-
+        if(PlayerTurn && !SelectShip)
+        {
+            if(Player.CountUseMarineRadar != 0)
+            {
+                Player.CountUseMarineRadar--;
+                MarineRadar.Text = AppResources.UseMarineRadar + $": {Player.CountUseMarineRadar}";
+                PlayerRadar = "Player turn: " + Bot.MarineRadar();
+                MarineRadarInfo.Text = PlayerRadar;
+            }
+        }
     }
 
     private void AttackField(Player player)
@@ -497,6 +506,7 @@ public partial class PlayWithBot : ContentPage
     private void BotAttackAnimated()
     {
         MarineRadarInfo.Text = BotRadar;
+        MarineRadar.Text = AppResources.UseMarineRadar + $": {Bot.CountUseMarineRadar}";
         HandSelectAttackButton = ButtonDictionary[Bot.SelectRandomAttackFields(Player)];
         HandSelectAttackButton.BackgroundColor = SelectedAttackFieldColor;
         Random random = new Random();
@@ -511,6 +521,7 @@ public partial class PlayWithBot : ContentPage
                 NextPlayerAlert("1", Player);
                 PlayerTurn = true;
                 HandTimeOfRound = TimeOfRound;
+                MarineRadar.Text = AppResources.UseMarineRadar + $": {Player.CountUseMarineRadar}";
                 UpdateTimer();
                 timer.Stop();
             }

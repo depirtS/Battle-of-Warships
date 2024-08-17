@@ -10,11 +10,13 @@ namespace WarshipsOnline
     {
         public int[,] OwnFields { get; set; }
         public List<string> HitAttacksID { get; set; }
+        public int CountUseMarineRadar { get; set; }
         protected int sizeOfBoard;
 
-        public Player(int sizeOfBoard)
+        public Player(int sizeOfBoard, int CountUseMarineRadar)
         {
             this.sizeOfBoard = sizeOfBoard;
+            this.CountUseMarineRadar = CountUseMarineRadar;
 
             OwnFields = new int[sizeOfBoard, sizeOfBoard];
             for (int i = 0; i < sizeOfBoard; i++)

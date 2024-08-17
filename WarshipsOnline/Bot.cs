@@ -9,7 +9,7 @@ namespace WarshipsOnline
     public class Bot : Player
     {
         private Random random;
-        public Bot(int sizeOfBoard) : base(sizeOfBoard)
+        public Bot(int sizeOfBoard, int CountUseMarineRadar) : base(sizeOfBoard, CountUseMarineRadar)
         {
             random = new Random();
         }
