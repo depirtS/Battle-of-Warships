@@ -53,7 +53,6 @@ public partial class PlayWithBot : ContentPage
         InitializeValues();
         InitializeBoard();
         InitializeTimer();
-
     }
     private void InitializeValues()
     {
@@ -416,7 +415,6 @@ public partial class PlayWithBot : ContentPage
                     ButtonDictionary[$"{i}{j}"].BackgroundColor = EmptyFieldColor;
                 else if (player.OwnFields[i, j] == 3)
                     ButtonDictionary[$"{i}{j}"].BackgroundColor = AttackedFieldColor;
-
             }
     }
 
@@ -435,6 +433,7 @@ public partial class PlayWithBot : ContentPage
                     ButtonDictionary[$"{i}{j}"].BackgroundColor = AttackedFieldColor;
             }
     }
+
     private void SelectRandomShipLocation(Player player)
     {
         Random random = new Random();

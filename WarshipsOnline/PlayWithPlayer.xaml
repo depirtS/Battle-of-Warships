@@ -5,22 +5,54 @@
              Title="PlayWithPlayer">
     <Grid SizeChanged="MainGrid_SizeChanged" x:Name="MainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.05*"/>
             <RowDefinition/>
-            <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
         <Image
-        Source="battleship.png"
-        Aspect="AspectFill"
-        Grid.ColumnSpan="2"
-        Grid.RowSpan="3"/>
-
-        <StackLayout Grid.Row="1" Grid.Column="1">
+            Source="battleship.png"
+            Aspect="AspectFill"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="3"/>
+        <Label
+            x:Name="SeeTimer"
+            Grid.RowSpan="2"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            FontSize="24"
+            Padding="20,5,0,0"
+            WidthRequest="100"
+            HeightRequest="50"
+            BackgroundColor="#50000000"/>
+        <StackLayout Orientation="Horizontal" x:Name="BoardAndControls" Grid.Row ="1">
+            <Grid x:Name="GridBoard" Margin="5"></Grid>
+            <ScrollView x:Name="GameControl" Margin="5" Padding="50,0,0,0">
+                <StackLayout>
+                    <Label 
+                        x:Name="MarineRadarHeadline"
+                        Style="{StaticResource Headline}"/>
+                    <Label
+                        x:Name="MarineRadarInfo"
+                        FontSize="20"
+                        Text="xxx*5, xx*2, xxxx*6"
+                        LineBreakMode="WordWrap"/>
+                    <Button
+                        x:Name="Confrim"
+                        Style="{StaticResource MenuButton}"
+                        Clicked="Confrim_Clicked"/>
+                    <Button
+                        x:Name="SeeBoard"
+                        Style="{StaticResource MenuButton}"
+                        Clicked="SeeBoard_Clicked"/>
+                    <Button
+                        x:Name="MarineRadar"
+                        Style="{StaticResource MenuButton}"
+                        Clicked="MarineRadar_Clicked"/>
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
 
         <Grid x:Name="LoadingOverlay" BackgroundColor="Black" Opacity="0.5" IsVisible="False" Grid.ColumnSpan="3" Grid.RowSpan="2">
