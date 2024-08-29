@@ -479,6 +479,7 @@ public partial class PlayWithBot : ContentPage
             }
             else
             {
+                SeeBoard.Text = AppResources.SeeBoard;
                 await DisplayAlert(AppResources.Attention, $"{AppResources.Turn}{playerNumber}", "OK");
                 GamePaused = false;
                 if (PlayerTurn)

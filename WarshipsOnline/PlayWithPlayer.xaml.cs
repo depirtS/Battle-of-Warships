@@ -198,22 +198,60 @@ public partial class PlayWithPlayer : ContentPage
                 {
                     if (PlayerTurn)
                     {
-
+                        HandCountOfShip = CountOfShip;
+                        PlayerTurn = false;
+                        SelectRandomShipLocation(FirstPlayer);
+                        NextPlayerAlert("2", SecondPlayer);
+                        HandTimeOfRound = TimeOfRound;
                     }
                     else
                     {
-
+                        PlayerTurn = true;
+                        SelectShip = false;
+                        SelectRandomShipLocation(SecondPlayer);
+                        NextPlayerAlert("1", FirstPlayer);
+                        HandTimeOfRound = TimeOfRound;
+                        FirstPlayerRadar = "First player turn: " + SecondPlayer.MarineRadar();
+                        MarineRadar.Text = AppResources.UseMarineRadar + $": {FirstPlayer.CountUseMarineRadar}";
                     }
                 }
                 else
                 {
                     if (PlayerTurn)
                     {
-
+                        Random random = new Random();
+                        var rowID = random.Next(0, SizeOfBoard);
+                        var columnID = random.Next(0, SizeOfBoard);
+                        while (SecondPlayer.OwnFields[rowID, columnID] != 0 && SecondPlayer.OwnFields[rowID, columnID] != 1)
+                        {
+                            rowID = random.Next(0, SizeOfBoard);
+                            columnID = random.Next(0, SizeOfBoard);
+                        }
+                        HandSelectAttackButton = ButtonDictionary[$"{rowID}{columnID}"];
+                        SeePlayBoard(FirstPlayer);
+                        AttackField(SecondPlayer);
+                        PlayerTurn = false;
+                        HandTimeOfRound = TimeOfRound;
+                        UpdateTimer();
+                        NextPlayerAlert("2", SecondPlayer);
                     }
                     else
                     {
-
+                        Random random = new Random();
+                        var rowID = random.Next(0, SizeOfBoard);
+                        var columnID = random.Next(0, SizeOfBoard);
+                        while (FirstPlayer.OwnFields[rowID, columnID] != 0 && FirstPlayer.OwnFields[rowID, columnID] != 1)
+                        {
+                            rowID = random.Next(0, SizeOfBoard);
+                            columnID = random.Next(0, SizeOfBoard);
+                        }
+                        HandSelectAttackButton = ButtonDictionary[$"{rowID}{columnID}"];
+                        SeePlayBoard(SecondPlayer);
+                        AttackField(FirstPlayer);
+                        PlayerTurn = true;
+                        HandTimeOfRound = TimeOfRound;
+                        UpdateTimer();
+                        NextPlayerAlert("1", FirstPlayer);
                     }
                 }
             }
@@ -307,7 +345,12 @@ public partial class PlayWithPlayer : ContentPage
             {
                 if (HandSelectAttackButton != null)
                 {
-                    PlayerAttackSelectedField(FirstPlayer);
+                    SeePlayBoard(FirstPlayer);
+                    AttackField(SecondPlayer);
+                    PlayerTurn = false;
+                    HandTimeOfRound = TimeOfRound;
+                    UpdateTimer();
+                    NextPlayerAlert("2", SecondPlayer);
                 }
             }
         }
@@ -324,18 +367,23 @@ public partial class PlayWithPlayer : ContentPage
             {
                 if (HandSelectAttackButton != null)
                 {
-                    PlayerAttackSelectedField(SecondPlayer);
+                    SeePlayBoard(SecondPlayer);
+                    AttackField(FirstPlayer);
+                    PlayerTurn = true;
+                    HandTimeOfRound = TimeOfRound;
+                    UpdateTimer();
+                    NextPlayerAlert("1", FirstPlayer);
                 }
             }
         }
     }
-    private void PlayerSetSelectedShipLocation(Player Player)
+    private void PlayerSetSelectedShipLocation(Player player)
     {
         HandCountOfShip = CountOfShip;
-        Player.SetSelectedFileds(FieldNames);
+        player.SetSelectedFileds(FieldNames);
         FieldNames = new List<string>();
         MarineRadarInfo.Text = AppResources.CountShip + CountOfShip;
-        HandTimeOfRound = 0;
+        HandTimeOfRound = TimeOfRound;
         if (PlayerTurn)
         {
             SecondPlayerRadar = "Second player turn: " + FirstPlayer.MarineRadar();
@@ -351,17 +399,13 @@ public partial class PlayWithPlayer : ContentPage
             SelectShip = false;
         }
     }
-    private void PlayerAttackSelectedField(Player Player)
-    {
-
-    }
 
     private void SeeBoard_Clicked(object sender, EventArgs e)
     {
+        Button button = (Button)sender;
         if (PlayerTurn && !SelectShip)
         {
-            Button button = (Button)sender;
-            if (button.Text == AppResources.SeeBoard && PlayerTurn)
+            if (button.Text == AppResources.SeeBoard)
             {
                 SeeOwnBoard(FirstPlayer);
                 button.Text = AppResources.SeePlayBoard;
@@ -369,6 +413,19 @@ public partial class PlayWithPlayer : ContentPage
             else
             {
                 SeePlayBoard(SecondPlayer);
+                button.Text = AppResources.SeeBoard;
+            }
+        }
+        else if(!SelectShip)
+        {
+            if (button.Text == AppResources.SeeBoard)
+            {
+                SeeOwnBoard(SecondPlayer);
+                button.Text = AppResources.SeePlayBoard;
+            }
+            else
+            {
+                SeePlayBoard(FirstPlayer);
                 button.Text = AppResources.SeeBoard;
             }
         }
@@ -393,7 +450,7 @@ public partial class PlayWithPlayer : ContentPage
                 SecondPlayer.CountUseMarineRadar--;
                 MarineRadar.Text = AppResources.UseMarineRadar + $": {SecondPlayer.CountUseMarineRadar}";
                 SecondPlayerRadar = "Player turn: " + FirstPlayer.MarineRadar();
-                MarineRadarInfo.Text = FirstPlayerRadar;
+                MarineRadarInfo.Text = SecondPlayerRadar;
             }
         }
     }
@@ -463,7 +520,7 @@ public partial class PlayWithPlayer : ContentPage
             if (TestEndGame(FirstPlayer))
             {
                 gameNoEnd = false;
-                await DisplayAlert(AppResources.Attention, AppResources.WinBot, "OK");
+                await DisplayAlert(AppResources.Attention, AppResources.WinPlayerTwo, "OK");
                 GlobalManager.LoadingOverlay(LoadingOverlay, Navigation);
             }
             if (TestEndGame(SecondPlayer))
@@ -487,15 +544,19 @@ public partial class PlayWithPlayer : ContentPage
             }
             else
             {
+
+                SeeBoard.Text = AppResources.SeeBoard;
                 await DisplayAlert(AppResources.Attention, $"{AppResources.Turn}{playerNumber}", "OK");
                 GamePaused = false;
                 if (PlayerTurn)
                 {
                     MarineRadarInfo.Text = FirstPlayerRadar;
+                    MarineRadar.Text = AppResources.UseMarineRadar + $": {FirstPlayer.CountUseMarineRadar}";
                 }
                 else
                 {
                     MarineRadarInfo.Text = SecondPlayerRadar;
+                    MarineRadar.Text = AppResources.UseMarineRadar + $": {SecondPlayer.CountUseMarineRadar}";
                 }
             }
         }
