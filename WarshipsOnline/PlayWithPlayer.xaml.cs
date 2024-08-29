@@ -8,8 +8,8 @@ public partial class PlayWithPlayer : ContentPage
     private int TimeOfRound { get; set; }
     private int HandTimeOfRound { get; set; }
     private int AmountUseMarineRadar { get; set; }
-    private string PlayerRadar { get; set; }
-    private string BotRadar { get; set; }
+    private string FirstPlayerRadar { get; set; }
+    private string SecondPlayerRadar { get; set; }
     private Player FirstPlayer { get; set; }
     private Player SecondPlayer { get; set; }
     private bool SelectShip { get; set; }
@@ -211,6 +211,10 @@ public partial class PlayWithPlayer : ContentPage
                     {
 
                     }
+                    else
+                    {
+
+                    }
                 }
             }
             else
@@ -239,8 +243,7 @@ public partial class PlayWithPlayer : ContentPage
     private void Selected_Field(object sender, EventArgs e)
     {
         Button button = (Button)sender;
-        if (PlayerTurn)
-        {
+
             if (SelectShip)
             {
                 ShipStageSelectField(button);
@@ -249,7 +252,7 @@ public partial class PlayWithPlayer : ContentPage
             {
                 AttackStageSelectField(button);
             }
-        }
+      
     }
     private void ShipStageSelectField(Button button)
     {
@@ -328,7 +331,25 @@ public partial class PlayWithPlayer : ContentPage
     }
     private void PlayerSetSelectedShipLocation(Player Player)
     {
-
+        HandCountOfShip = CountOfShip;
+        Player.SetSelectedFileds(FieldNames);
+        FieldNames = new List<string>();
+        MarineRadarInfo.Text = AppResources.CountShip + CountOfShip;
+        HandTimeOfRound = 0;
+        if (PlayerTurn)
+        {
+            SecondPlayerRadar = "Second player turn: " + FirstPlayer.MarineRadar();
+            NextPlayerAlert("2", SecondPlayer);
+            PlayerTurn = false;
+        }
+        else
+        {
+            FirstPlayerRadar = "First player turn: " + SecondPlayer.MarineRadar();
+            NextPlayerAlert("1", FirstPlayer);
+            MarineRadarInfo.Text = FirstPlayerRadar;
+            PlayerTurn = true;
+            SelectShip = false;
+        }
     }
     private void PlayerAttackSelectedField(Player Player)
     {
@@ -361,8 +382,8 @@ public partial class PlayWithPlayer : ContentPage
             {
                 FirstPlayer.CountUseMarineRadar--;
                 MarineRadar.Text = AppResources.UseMarineRadar + $": {FirstPlayer.CountUseMarineRadar}";
-                PlayerRadar = "Player turn: " + SecondPlayer.MarineRadar();
-                MarineRadarInfo.Text = PlayerRadar;
+                FirstPlayerRadar = "Player turn: " + SecondPlayer.MarineRadar();
+                MarineRadarInfo.Text = FirstPlayerRadar;
             }
         }
         else if (!SelectShip)
@@ -371,8 +392,8 @@ public partial class PlayWithPlayer : ContentPage
             {
                 SecondPlayer.CountUseMarineRadar--;
                 MarineRadar.Text = AppResources.UseMarineRadar + $": {SecondPlayer.CountUseMarineRadar}";
-                BotRadar = "Player turn: " + FirstPlayer.MarineRadar();
-                MarineRadarInfo.Text = PlayerRadar;
+                SecondPlayerRadar = "Player turn: " + FirstPlayer.MarineRadar();
+                MarineRadarInfo.Text = FirstPlayerRadar;
             }
         }
     }
@@ -470,11 +491,11 @@ public partial class PlayWithPlayer : ContentPage
                 GamePaused = false;
                 if (PlayerTurn)
                 {
-
+                    MarineRadarInfo.Text = FirstPlayerRadar;
                 }
                 else
                 {
-
+                    MarineRadarInfo.Text = SecondPlayerRadar;
                 }
             }
         }
