@@ -14,11 +14,32 @@ public partial class HowToPlay : ContentPage
         MainGrid_SizeChanged(this, new EventArgs());
         NavigationPage.SetHasNavigationBar(this, false);
         InitializeLanguage();
+        InitializeButtonColors();
     }
     private void InitializeLanguage()
     {
         Header.Text = AppResources.HowPlay;
     }
+
+    private void InitializeButtonColors()
+    {
+        AnalyzePreference("FieldColor", FieldButton, Colors.Gray);
+        AnalyzePreference("ShipColor", ShipButton, Colors.Yellow);
+        AnalyzePreference("AttackedfieldColor", AttackedFieldButton, Colors.Red);
+        AnalyzePreference("EmptyFieldColor", EmptyFieldButton, Colors.DarkRed);
+        AnalyzePreference("SelectedAttackFieldColor", SelectedAttackFieldButton, Colors.Orange);
+    }
+
+    private void AnalyzePreference(string keyPreference, Button button, Color defaultColor)
+    {
+        if (Preferences.Default.ContainsKey(keyPreference))
+        {
+            string color = Preferences.Default.Get(keyPreference, defaultColor.ToHex());
+            button.BackgroundColor = Color.FromArgb(color);
+        }
+        else
+            Preferences.Default.Set(keyPreference, defaultColor.ToHex());
+        }
 
     private void MainGrid_SizeChanged(object sender, EventArgs e)
     {
