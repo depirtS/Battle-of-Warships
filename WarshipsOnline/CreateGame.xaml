@@ -32,6 +32,7 @@
                     Style="{StaticResource MenuButton}"/>
 
                 <Picker
+                    TextColor="White"
                     x:Name="SelectGamemode"
                     ItemsSource="{Binding Gamemodes}"
                     Margin="0,20,0,20"/>

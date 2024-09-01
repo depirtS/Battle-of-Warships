@@ -121,6 +121,7 @@ public partial class CreateGame : ContentPage
             BoardSize.FontSize = fontSize;
             ShipCount.FontSize = fontSize;
             RoundTime.FontSize = fontSize;
+            HowManyUseMarineRadar.FontSize = fontSize;
         }
         else
         {
@@ -132,6 +133,7 @@ public partial class CreateGame : ContentPage
             BoardSize.FontSize = fontSize;
             ShipCount.FontSize = fontSize;
             RoundTime.FontSize = fontSize;
+            HowManyUseMarineRadar.FontSize = fontSize;
         }
     }
 }

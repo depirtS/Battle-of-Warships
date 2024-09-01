@@ -35,6 +35,7 @@
                         x:Name="MarineRadarHeadline"
                         Style="{StaticResource Headline}"/>
                     <Label
+                        BackgroundColor="#80000000"
                         x:Name="MarineRadarInfo"
                         FontSize="20"
                         Text="xxx*5, xx*2, xxxx*6"

@@ -26,11 +26,13 @@
                     Style="{StaticResource Headline}"/>
 
                 <Picker 
+                    TextColor="White"
                     x:Name="SelectedLanguage"
                     ItemsSource="{Binding Languages}"
                     Margin="0,20,0,20"/>
 
                 <Picker
+                    TextColor="White"
                     x:Name="FieldColor"
                     ItemsSource="{Binding ColorsBinding}"
                     SelectedIndexChanged="FieldColor_SelectedIndexChanged"/>
@@ -39,6 +41,7 @@
                     Style="{StaticResource MenuButton}"/>
 
                 <Picker
+                    TextColor="White"
                     x:Name="ShipColor"
                     ItemsSource="{Binding ColorsBinding}"
                     SelectedIndexChanged="SelectColor_SelectedIndexChanged"/>
@@ -47,6 +50,7 @@
                     Style="{StaticResource MenuButton}"/>
 
                 <Picker
+                    TextColor="White"
                     x:Name="AttackedFieldColor"
                     ItemsSource="{Binding ColorsBinding}"
                     SelectedIndexChanged="AttackedFieldColor_SelectedIndexChanged"/>
@@ -55,6 +59,7 @@
                     Style="{StaticResource MenuButton}"/>
 
                 <Picker
+                    TextColor="White"
                     x:Name="EmptyFieldColor"
                     ItemsSource="{Binding ColorsBinding}"
                     SelectedIndexChanged="EmptyFieldColor_SelectedIndexChanged"/>
@@ -63,6 +68,7 @@
                     Style="{StaticResource MenuButton}"/>
 
                 <Picker
+                    TextColor="White"
                     x:Name="SelectedAttackFieldColor"
                     ItemsSource="{Binding ColorsBinding}"
                     SelectedIndexChanged="SelectedAttackFieldColor_SelectedIndexChanged"/>

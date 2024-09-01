@@ -42,6 +42,7 @@ public partial class PlayWithBot : ContentPage
 
     public PlayWithBot(int sizeOfBoard, int countOfShip, int timeOfRound, int amountUseMarineRadar)
     {
+        DeviceDisplay.MainDisplayInfoChanged += OnOrientationChanged;
         SizeOfBoard = sizeOfBoard;
         CountOfShip = countOfShip;
         TimeOfRound = timeOfRound;
@@ -570,5 +571,16 @@ public partial class PlayWithBot : ContentPage
             }
 
         }
+    }
+    void OnOrientationChanged(object sender, DisplayInfoChangedEventArgs e)
+    {
+        var timer = Dispatcher.CreateTimer();
+        timer.Interval = TimeSpan.FromSeconds(1);
+        timer.Tick += (s, e) =>
+        {
+            MainGrid_SizeChanged(this, e);
+            timer.Stop();
+        };
+        timer.Start();
     }
 }
