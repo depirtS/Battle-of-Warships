@@ -70,11 +70,32 @@ namespace WarshipsOnline {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attack on board:
+        ///A preview of the board - fields that were attacked by the enemy on which the ship was.
+        ///Enemy attack board - fields that have been attacked where there was an enemy ship..
+        /// </summary>
+        internal static string AttackField {
+            get {
+                return ResourceManager.GetString("AttackField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attention.
         /// </summary>
         internal static string Attention {
             get {
                 return ResourceManager.GetString("Attention", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Basic Field:
+        ///A primary field where no action has been taken..
+        /// </summary>
+        internal static string BasicField {
+            get {
+                return ResourceManager.GetString("BasicField", resourceCulture);
             }
         }
         
@@ -394,6 +415,26 @@ namespace WarshipsOnline {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Marine Radar Example:
+        ///Marine Radar - Each ship is represented by a series of “x” characters, where the number of “x” characters corresponds to the size of the ship. The number of ships of each size is represented by a number followed by an asterisk * before the “x” characters. For example, “3*xx, 1*xxxx” means that three double-size ships and one quadruple-size ship have been detected on the enemy board..
+        /// </summary>
+        internal static string MarineRadarDescription {
+            get {
+                return ResourceManager.GetString("MarineRadarDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missed attack:
+        ///fields attacked where there was no ship..
+        /// </summary>
+        internal static string MissedAttackField {
+            get {
+                return ResourceManager.GetString("MissedAttackField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Battle of Warships.
         /// </summary>
         internal static string NameApplication {
@@ -520,6 +561,16 @@ namespace WarshipsOnline {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Target Selection for Attack:
+        ///The selected field to attack..
+        /// </summary>
+        internal static string SetAttackField {
+            get {
+                return ResourceManager.GetString("SetAttackField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         internal static string Settings {
@@ -552,6 +603,19 @@ namespace WarshipsOnline {
         internal static string ShipCount {
             get {
                 return ResourceManager.GetString("ShipCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ship Location Selection:
+        ///Selecting the board - selected ship locations.
+        ///
+        ///Player&apos;s Board:
+        ///Previewing the board - fields belonging to the player containing ships..
+        /// </summary>
+        internal static string ShipField {
+            get {
+                return ResourceManager.GetString("ShipField", resourceCulture);
             }
         }
         

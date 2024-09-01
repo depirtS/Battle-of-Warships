@@ -11,7 +11,6 @@ public partial class HowToPlay : ContentPage
 	{
         GlobalManager.SetCulture(GlobalManager.CultureCode);
         InitializeComponent();
-        MainGrid_SizeChanged(this, new EventArgs());
         NavigationPage.SetHasNavigationBar(this, false);
         InitializeLanguage();
         InitializeButtonColors();
@@ -19,6 +18,13 @@ public partial class HowToPlay : ContentPage
     private void InitializeLanguage()
     {
         Header.Text = AppResources.HowPlay;
+        GrayField.Text = AppResources.BasicField;
+        YellowField.Text = AppResources.ShipField;
+        RedField.Text = AppResources.AttackField;
+        DarkRedField.Text = AppResources.MissedAttackField;
+        OrangeField.Text = AppResources.SetAttackField;
+        RadarDescription.Text = AppResources.MarineRadarDescription;
+
     }
 
     private void InitializeButtonColors()
@@ -40,20 +46,4 @@ public partial class HowToPlay : ContentPage
         else
             Preferences.Default.Set(keyPreference, defaultColor.ToHex());
         }
-
-    private void MainGrid_SizeChanged(object sender, EventArgs e)
-    {
-        int width = (int)MainGrid.Width;
-        int height = (int)MainGrid.Height;
-        if (width < height)
-        {
-            GrayField.FontSize = YellowField.FontSize = RedField.FontSize = DarkRedField.FontSize = OrangeField.FontSize = TransparentField.FontSize = TransparentButton.FontSize = width / 30;
-            Header.FontSize = width / 20;
-        }
-        else
-        {
-            GrayField.FontSize = YellowField.FontSize = RedField.FontSize = DarkRedField.FontSize = OrangeField.FontSize = TransparentField.FontSize = TransparentButton.FontSize = width / 30;
-            Header.FontSize = width / 20;
-        }
-    }
 }

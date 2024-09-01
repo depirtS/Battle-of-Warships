@@ -315,4 +315,32 @@
   <data name="Yes" xml:space="preserve">
     <value>Tak</value>
   </data>
+  <data name="BasicField" xml:space="preserve">
+    <value>Podstawowe pole:
+Pole podstawowe, na którym nie dokonano żadnej akcji.</value>
+  </data>
+  <data name="ShipField" xml:space="preserve">
+    <value>Wybór lokalizacji statku:
+Wybór planszy - wybrane lokalizacje statków.
+
+Plansza gracza:
+Podgląd planszy - pola należące do gracza zawierające statki.</value>
+  </data>
+  <data name="AttackField" xml:space="preserve">
+    <value>Atak na planszy:
+Podglądanie planszy - pola, które zostały zaatakowane przez przeciwnika na których był statek.
+Plansza ataku wroga - pola zaatakowane, na których był statek wroga.</value>
+  </data>
+  <data name="MissedAttackField" xml:space="preserve">
+    <value>Nietrafione pola:
+ pola zaatakowane, na których nie było statku.</value>
+  </data>
+  <data name="SetAttackField" xml:space="preserve">
+    <value>Wybór celu do ataku:
+Wybrane pole do ataku.</value>
+  </data>
+  <data name="MarineRadarDescription" xml:space="preserve">
+    <value>Przykład radaru morskiego:
+Radar morski - Każdy statek jest reprezentowany przez serię znaków „x”, gdzie liczba znaków „x” odpowiada wielkości statku. Liczba statków każdego rozmiaru jest reprezentowana przez liczbę, po której następuje gwiazdka () przed znakami „x”. Na przykład „3*xx, 1*xxxx” oznacza, że na planszy wroga wykryto trzy statki podwójnego rozmiaru i jeden statek poczwórnego rozmiaru.</value>
+  </data>
 </root>

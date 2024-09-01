@@ -315,4 +315,32 @@
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
   </data>
+  <data name="BasicField" xml:space="preserve">
+    <value>Basic Field:
+A primary field where no action has been taken.</value>
+  </data>
+  <data name="ShipField" xml:space="preserve">
+    <value>Ship Location Selection:
+Selecting the board - selected ship locations.
+
+Player's Board:
+Previewing the board - fields belonging to the player containing ships.</value>
+  </data>
+  <data name="AttackField" xml:space="preserve">
+    <value>Attack on board:
+A preview of the board - fields that were attacked by the enemy on which the ship was.
+Enemy attack board - fields that have been attacked where there was an enemy ship.</value>
+  </data>
+  <data name="MissedAttackField" xml:space="preserve">
+    <value>Missed attack:
+fields attacked where there was no ship.</value>
+  </data>
+  <data name="SetAttackField" xml:space="preserve">
+    <value>Target Selection for Attack:
+The selected field to attack.</value>
+  </data>
+  <data name="MarineRadarDescription" xml:space="preserve">
+    <value>Marine Radar Example:
+Marine Radar - Each ship is represented by a series of “x” characters, where the number of “x” characters corresponds to the size of the ship. The number of ships of each size is represented by a number followed by an asterisk * before the “x” characters. For example, “3*xx, 1*xxxx” means that three double-size ships and one quadruple-size ship have been detected on the enemy board.</value>
+  </data>
 </root>
