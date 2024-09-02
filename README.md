@@ -23,7 +23,7 @@
 
 > ## How do I install the application?
 > 
-> Files are stored on OneDrive:
+> Files are stored on the GitHub repository:
 > 
 > - **Warshipsonline.apk**: Installation file for Android.
 > - Download and run the `.apk` file on your Android device to install the application.
@@ -31,7 +31,7 @@
 > - Download and unzip the file to your desired location.
 > - Navigate to the Warships folder, then double-click the `Warships.exe` file to run the application.
 
-> [Link to OneDrive folder](https://1drv.ms/f/c/85703d3127e3f6ee/EgpcyFv4JPtBhr1j_faZ53cBBM0taAV97w6SDg-fMwgyBw?e=brdbgd) </br>
+> [Link to download folder](https://github.com/depirtS/Battle-of-Warships/tree/master/WarshipsOnline/download_app) </br>
 > [Link to first project version](https://github.com/depirtS/Warships_in_Maui)
 
 *Images are from pixabay.com and have been used under their license. Images have not been modified.*
