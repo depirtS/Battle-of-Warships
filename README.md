@@ -21,17 +21,6 @@
 > - **Button Color Customization**: Players can customize button colors to personalize their experience.
 > - **Animated Bot Attacks**: The game now includes animations for bot attacks, making gameplay more engaging.
 
-> ## How do I install the application?
-> 
-> Files are stored on the GitHub repository:
-> 
-> - **Warshipsonline.apk**: Installation file for Android.
-> - Download and run the `.apk` file on your Android device to install the application.
-> - **Warships_Windows.zip**: Windows application folder.
-> - Download and unzip the file to your desired location.
-> - Navigate to the Warships folder, then double-click the `Warships.exe` file to run the application.
-
-> [Link to download folder](https://github.com/depirtS/Battle-of-Warships/tree/master/WarshipsOnline/download_app) </br>
 > [Link to first project version](https://github.com/depirtS/Warships_in_Maui)
 
 *Images are from pixabay.com and have been used under their license. Images have not been modified.*
